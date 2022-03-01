@@ -1,7 +1,7 @@
 {
-  "name": "fs-app-template",
+  "name": "HippoTea",
   "version": "2.0.0",
-  "description": "Some boilerplate code to get you started - get shakin'!",
+  "description": "Selling bubble tea",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
