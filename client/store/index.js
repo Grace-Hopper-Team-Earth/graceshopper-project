@@ -4,12 +4,14 @@ import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import auth from './auth';
 import singleTeaReducer from './singleTea';
-import usersReducer from './users
+import usersReducer from './users';
+import teasReducer from './teas';
 
 const reducer = combineReducers({
   auth,
   users: usersReducer,
-  singleTea: singleTeaReducer
+  singleTea: singleTeaReducer,
+  allTeas: teasReducer
 });
 
 const middleware = composeWithDevTools(
