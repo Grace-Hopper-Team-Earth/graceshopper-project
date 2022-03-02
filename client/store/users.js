@@ -55,5 +55,7 @@ export default function usersReducer(state = initialState, action) {
             return {...state, singleUser: action.user}
         case GET_ALL_USERS:
             return {...state, allUsers: action.users}
+        default: 
+            return state
     }
 }
