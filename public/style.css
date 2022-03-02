@@ -1,21 +1,51 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+  display: inline;
+  color: #1FA2F8
+}
+
+h4 {
+  margin-top: 0%;
+  color: #584C56
+}
+
+
 body {
-  font-family: sans-serif;
+  font-family: 'Nunito', sans-serif;
+  background: #ffffff
 }
 
 a {
   text-decoration: none;
+  color:#1FA2F8
 }
 
 label {
   display: block;
 }
 
+nav {
+  background-color: rgb(255, 255, 255);
+}
+
 nav a {
   display: inline-block;
   margin: 1em;
+  font-size: 14px;
+  font-family: 'Nunito', sans-serif;
+
 }
 
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+img {
+    display: block;
+  border-radius: 50%;
 }
