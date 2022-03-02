@@ -5,11 +5,12 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1>Hippo Tea</h1>
-    <h4>Made to order bubble teas</h4>
-    <img src='https://st2.depositphotos.com/15146240/48329/v/380/depositphotos_483299434-stock-illustration-cute-hippopotamus-drinking-boba-milk.jpg?forcejpeg=true' 
+    <img src='https://static.vecteezy.com/system/resources/previews/002/913/654/non_2x/cute-hippopotamus-drinking-boba-milk-tea-animal-cartoon-concept-isolated-can-used-for-t-shirt-greeting-card-invitation-card-or-mascot-flat-cartoon-style-free-vector.jpg' 
     width="100"
     height="100"/>
+    <h1>Hippo Tea</h1>
+    <h4>Made to order bubble teas</h4>
+    
     
     <nav>
       {/*Jess commented out these lines to get the logged in experience... {isLoggedIn ? ( */}

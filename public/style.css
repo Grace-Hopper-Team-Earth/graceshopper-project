@@ -4,10 +4,12 @@
 }
 
 h1 {
+  display: inline;
   color: #1FA2F8
 }
 
 h4 {
+  margin-top: 0%;
   color: #584C56
 }
 
@@ -19,6 +21,7 @@ body {
 
 a {
   text-decoration: none;
+  color:#1FA2F8
 }
 
 label {
@@ -43,5 +46,6 @@ form div {
 }
 
 img {
+    display: block;
   border-radius: 50%;
 }
