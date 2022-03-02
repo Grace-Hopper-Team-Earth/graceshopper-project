@@ -4,6 +4,7 @@ module.exports = router
 
 router.get('/', async (req, res, next) => {
   try {
+    // REVISIT WHEN MAKING ADMIN PERMISSIONS (only admin can see users list)
     // const { isAdmin } = await User.findByToken(req.headers.authorization);
     // console.log(req.headers)
     // if (isAdmin !== true) {
