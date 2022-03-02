@@ -82,7 +82,7 @@ const initialState = {
 
 
 
-export default teasReducer = (state = initialState, action) => {
+export default function teasReducer (state = initialState, action) {
   switch (action.type) {
     case GET_ALL_TEAS:
       return {...state, allTeas: action.teas};
