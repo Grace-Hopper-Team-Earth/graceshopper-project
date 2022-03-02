@@ -17,7 +17,7 @@ class SingleUser extends React.Component {
                 <h3>{user.firstName + " " + user.lastName}</h3>
                 <h4>{user.email}</h4>
                 <h4>{user.address}</h4>
-                <h5>{`${user.isAdmin ? 'Admin' : ''}`}</h5>
+                <h5>{user.isAdmin ? 'Admin' : ''}</h5>
             </div>
         )
     }
