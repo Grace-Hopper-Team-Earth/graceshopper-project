@@ -7,7 +7,7 @@ import teasReducer from './teas';
 
 const reducer = combineReducers({ 
   auth,
-  allTeas: teasReducer
+  teas: teasReducer
 });
 
 const middleware = composeWithDevTools(

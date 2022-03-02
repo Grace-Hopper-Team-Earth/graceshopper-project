@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 // ACTION TYPES
-const SET_TEAS = 'SET_TEAS';
+const GET_ALL_TEAS = 'GET_ALL_TEAS';
 // const ADD_NEW_TEA = 'ADD_NEW_TEA';
 // const UPDATE_TEA = 'UPDATE_TEA';
 // const DELETE_TEA = 'DELETE_TEA';
 
 // ACTION CREATORS
 const setTeas = (teas) => ({
-  type: SET_TEAS,
+  type: GET_ALL_TEAS,
   teas
 })
 
@@ -76,14 +76,16 @@ export const fetchAllTeas = () => {
 
 
 // Initial State
-const initialState = [];
+const initialState = {
+    allTeas: []
+};
 
-// Take a look at app/redux/index.js to see where this reducer is
-// added to the Redux store with combineReducers
-const teasReducer = (state = initialState, action) => {
+
+
+export default teasReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_TEAS:
-      return action.teas;
+    case GET_ALL_TEAS:
+      return {...state, allTeas: action.teas};
     // case ADD_NEW_TEA:
     //   return [...state, action.tea];
     // case UPDATE_TEA:
@@ -95,5 +97,3 @@ const teasReducer = (state = initialState, action) => {
       return state;
   }
 }
-
-export default teasReducer;
