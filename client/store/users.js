@@ -24,7 +24,7 @@ export const fetchSingleUser = (id) => {
 }
 
 // INITIAL STATE
-const intialState = {
+const initialState = {
     singleUser: {}
 }
 
