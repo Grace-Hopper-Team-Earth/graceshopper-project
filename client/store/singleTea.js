@@ -8,7 +8,7 @@ const GOT_SINGLE_TEA = 'GOT_SINGLE_TEA';
 const gotSingleTea = (tea) => {
   return {
     type:GOT_SINGLE_TEA,
-    tea,
+    tea
   }
 }
 
@@ -22,7 +22,7 @@ export const fetchSingleTea = (id) => {
 };
 
 // reducer
-const singleTeaReducer = (state = {}, action) {
+const singleTeaReducer = (state = {}, action) => {
   switch(action.type) {
     case GOT_SINGLE_TEA:
       return action.tea;
