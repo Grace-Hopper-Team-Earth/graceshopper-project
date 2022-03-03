@@ -17,15 +17,18 @@ const gotSingleTea = (tea) => {
 export const fetchSingleTea = (id) => {
   return async (dispatch) => {
     const { data } = await axios.get(`/api/teas/${id}`);
+    console.log('this is data in thunk', data)
     dispatch(gotSingleTea(data));
   };
 };
 
+const initialState = {singleTea: {}}
+
 // reducer
-const singleTeaReducer = (state = {}, action) => {
+const singleTeaReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_SINGLE_TEA:
-      return action.tea;
+      return {...state, singleTea: action.tea};
     default:
       return state;
   }
