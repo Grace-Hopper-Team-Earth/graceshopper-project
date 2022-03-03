@@ -29,6 +29,6 @@ const singleTeaReducer = (state = {}, action) => {
     default:
       return state;
   }
-}
+};
 
 export default singleTeaReducer;
