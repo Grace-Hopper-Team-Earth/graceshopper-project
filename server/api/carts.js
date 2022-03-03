@@ -16,3 +16,13 @@ router.get('/:cartid', async (req, res, next) => {
     next(err)
   }
 })
+
+router.put('/:cartid', async (req, res, next) => {
+  try {
+    const cartToUpdate = await Cart.findByPk(req.params.cartid);
+    console.log('this is req.body',req.body)
+    res.send(await cartToUpdate.update(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
