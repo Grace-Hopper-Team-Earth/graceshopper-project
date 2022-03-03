@@ -31,8 +31,8 @@ export class AllTeas extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-  teas: state.teas
+const mapStateToProps = ({allTeas}) => ({
+  teas: allTeas.allTeas
 });
 
 const mapDispatchToProps = (dispatch) => ({
