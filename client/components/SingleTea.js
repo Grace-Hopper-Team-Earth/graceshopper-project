@@ -15,7 +15,10 @@ export class SingleTea extends React.Component {
     const { tea } = this.props;
     return (
       <div>
-        <img src={tea.imageUrl} />
+        <img src={tea.imageUrl}  
+            width="200"
+            height="200"
+            border-radius="30px" />
         <h1>{tea.name}</h1>
         <div>{tea.description}</div>
         <div>Price: ${tea.price}</div>
