@@ -14,10 +14,10 @@ class SingleUser extends React.Component {
         console.log(user);
         return (
             <div>
-                <h3>{user.firstName + " " + user.lastName}</h3>
-                <h4>{user.email}</h4>
+                <h3 style={{"marginBottom": "5px"}}>{user.firstName + " " + user.lastName}</h3>
+                <h5 style={{"color": "red", "marginTop": "5px"}}>{user.isAdmin ? 'Admin' : ''}</h5>
+                <h4>Email: {user.email}</h4>
                 <h4>{user.address}</h4>
-                <h5>{user.isAdmin ? 'Admin' : ''}</h5>
             </div>
         )
     }
