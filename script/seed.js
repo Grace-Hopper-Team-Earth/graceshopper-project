@@ -62,29 +62,66 @@ async function seed() {
   // Creating Teas
   const teas = [
     {
-      name: 'Classic milktea',
+      name: 'Classic Hippo Milk Tea',
       description: 'made with classic black tea with milk',
       price: 6,
+      imageUrl:
+        'https://abeautifulmess.com/wp-content/uploads/2013/08/no-fail-boba-pearl-method.jpg',
     },
     {
-      name: 'Mango milktea',
+      name: 'Mango Milk Tea',
       description: 'mango flavor milktea',
       price: 9,
     },
     {
-      name: 'Strawberry milktea',
+      name: 'Strawberry Milk Tea',
       description: 'strawberry flavor milktea',
       price: 6,
     },
     {
-      name: 'Matcha milktea',
+      name: 'Matcha Milk Tea',
       description: 'matcha flavor milktea',
       price: 5,
+    },
+    {
+      name: 'Brown Sugar Bubble Milk Tea',
+      description: 'made with brown sugar',
+      price: 6,
     },
     {
       name: 'Osmanthus Oolong Tea',
       description: 'made with osmanthus and oolong tea',
       price: 7,
+    },
+    {
+      name: 'Peach Oolong Tea',
+      description: 'made with peach and oolong tea',
+      price: 4,
+    },
+    {
+      name: '4 Season Oolong Bubble Tea',
+      description: 'classic 4 season oolong tea',
+      price: 4,
+    },
+    {
+      name: 'Yogurt Strawberry Tea',
+      description: 'made with fresh strawberry',
+      price: 6,
+    },
+    {
+      name: 'Yogurt Mango Tea',
+      description: 'made with fresh mango',
+      price: 6,
+    },
+    {
+      name: 'Yogurt Dragon Fruit Tea',
+      description: 'made with fresh dragon fruit',
+      price: 6,
+    },
+    {
+      name: 'Yogurt Kiwi Tea',
+      description: 'made with fresh kiwi',
+      price: 6,
     },
   ];
 
