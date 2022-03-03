@@ -6,7 +6,9 @@ import Home from './components/Home';
 import {me} from './store'
 import AllTeas from './components/AllTeas';
 import SingleTea from './components/SingleTea';
-import SingleUser from './components/SingleUser'
+import SingleUser from './components/SingleUser';
+import AdminPortal from './components/AdminPortal';
+import AllUsers from './components/AllUsers';
 
 /**
  * COMPONENT
@@ -28,6 +30,8 @@ class Routes extends Component {
             <Route exact path="/home" component={Home} />
             <Route path="/teas/:id" component={SingleTea} />
             <Route path="/users/:id" component={SingleUser} />
+            <Route path="/adminportal" component={AdminPortal} />
+            <Route exact path="/users" component={AllUsers} />
             <Redirect to="/home" />
           </Switch>
         ) : (
@@ -53,7 +57,8 @@ const mapState = state => {
   return {
     // Being 'logged in' for our purposes will be defined has having a state.auth that has a truthy id.
     // Otherwise, state.auth will be an empty object, and state.auth.id will be falsey
-    isLoggedIn: !!state.auth.id
+    isLoggedIn: !!state.auth.id,
+    isAdmin: state.auth.isAdmin
   }
 }
 

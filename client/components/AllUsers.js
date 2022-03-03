@@ -7,21 +7,25 @@ class AllUsers extends React.Component {
     componentDidMount() {
         this.props.getAllUsers();
     }
-
+    
     render() {
+        console.log(this.props.allUsers[6])
         const users = this.props.allUsers;
         
         return (
             <div>
-                {users.map((user) => {
-                    <div key={user.id}>
-                        <Link to={`/users/${user.id}`}>
-                            <p>{user.firstName + " " + user.lastName}</p>
-                            <p>{user.email}</p>
-                            <p>{user.isAdmin ? 'Admin' : ''}</p>
-                        </Link>
-                    </div>
-                })}
+                <h2>Registered Users:</h2>
+                <div>
+                    {users.map((user) => (
+                        <div key={user.id}>
+                            <Link to={`/users/${user.id}`}>
+                                <h5>{user.firstName + " " + user.lastName}</h5>
+                                <h5>{user.username}</h5>
+                                <h5>{user.isAdmin ? 'Admin' : ''}</h5>
+                            </Link>
+                        </div>
+                    ))}
+                </div>
             </div>
         )
     }
