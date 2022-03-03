@@ -1,6 +1,6 @@
 import React from 'react'
 import {fetchSingleTea} from '../store/singleTea'
-inport {connect} from 'react-redux'
+import {connect} from 'react-redux'
 
 
 export class SingleTea extends React.Component {
@@ -8,6 +8,7 @@ export class SingleTea extends React.Component {
     this.props.fetchSingleTea(this.props.match.params.id)
   }
   render () {
+    console.log('this is props ____', this.props)
     const {tea} = this.props
     return (
       <div>
@@ -20,9 +21,9 @@ export class SingleTea extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({singleTea}) => {
   return {
-    tea: state.tea
+    tea: singleTea.singleTea
   }
 }
 
