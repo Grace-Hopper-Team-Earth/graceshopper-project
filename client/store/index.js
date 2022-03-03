@@ -5,7 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import auth from './auth';
 import singleTeaReducer from './singleTea';
 import usersReducer from './users';
-import teasReducer from './teas';
+import teasReducer from './teas'
 
 const reducer = combineReducers({
   auth,
