@@ -72,56 +72,78 @@ async function seed() {
       name: 'Mango Milk Tea',
       description: 'mango flavor milktea',
       price: 9,
+      imageUrl:
+        'https://www.theflavorbender.com/wp-content/uploads/2020/06/Bubble-Milk-Tea-SM-7518-2.jpg',
     },
     {
       name: 'Strawberry Milk Tea',
       description: 'strawberry flavor milktea',
       price: 6,
+      imageUrl:
+      'http://abeautifulmess.com/wp-content/uploads/2013/08/no-fail-boba-pearl-method.jpg',
     },
     {
       name: 'Matcha Milk Tea',
       description: 'matcha flavor milktea',
       price: 5,
+      imageUrl:
+      'https://www.aimeemars.com/wp-content/uploads/2021/03/IMG_4398.jpg',
     },
     {
       name: 'Brown Sugar Bubble Milk Tea',
       description: 'made with brown sugar',
       price: 6,
+      imageUrl:
+      'https://abeautifulmess.com/wp-content/uploads/2013/08/no-fail-boba-pearl-method.jpg',
     },
     {
       name: 'Osmanthus Oolong Tea',
       description: 'made with osmanthus and oolong tea',
       price: 7,
+      imageUrl:
+      'https://www.theflavorbender.com/wp-content/uploads/2020/06/Bubble-Milk-Tea-SM-7518-2.jpg',
     },
     {
       name: 'Peach Oolong Tea',
       description: 'made with peach and oolong tea',
       price: 4,
+      imageUrl:
+      'https://abeautifulmess.com/wp-content/uploads/2013/08/no-fail-boba-pearl-method.jpg',
     },
     {
       name: '4 Season Oolong Bubble Tea',
       description: 'classic 4 season oolong tea',
       price: 4,
+      imageUrl:
+      'https://www.aimeemars.com/wp-content/uploads/2021/03/IMG_4398.jpg',
     },
     {
       name: 'Yogurt Strawberry Tea',
       description: 'made with fresh strawberry',
       price: 6,
+      imageUrl:
+      'https://abeautifulmess.com/wp-content/uploads/2013/08/no-fail-boba-pearl-method.jpg',
     },
     {
       name: 'Yogurt Mango Tea',
       description: 'made with fresh mango',
       price: 6,
+      imageUrl:
+      'https://www.theflavorbender.com/wp-content/uploads/2020/06/Bubble-Milk-Tea-SM-7518-2.jpg',
     },
     {
       name: 'Yogurt Dragon Fruit Tea',
       description: 'made with fresh dragon fruit',
       price: 6,
+      imageUrl:
+      'https://abeautifulmess.com/wp-content/uploads/2013/08/no-fail-boba-pearl-method.jpg',
     },
     {
       name: 'Yogurt Kiwi Tea',
       description: 'made with fresh kiwi',
       price: 6,
+      imageUrl:
+      'https://www.aimeemars.com/wp-content/uploads/2021/03/IMG_4398.jpg',
     },
   ];
 

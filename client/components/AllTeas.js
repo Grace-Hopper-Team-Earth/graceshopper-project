@@ -30,7 +30,7 @@ export class AllTeas extends React.Component {
               ))
             ) : (
               <div>
-                <h2>What, no robots??</h2>
+                <h2>Wait, where's all the tea??</h2>
                 <p>
                   Oh no...we can't find our teas right now!
                 </p>

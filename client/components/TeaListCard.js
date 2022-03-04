@@ -9,7 +9,7 @@ const cardStyles = {
     height: 200,
     alignItems: 'center',
     justifyContent: 'space-between',
-    margin: 20,
+    margin: 10,
     padding: 10,
     borderRadius: 10,
     boxShadow: '0 0 1px 1px #cec7c759',
@@ -38,6 +38,10 @@ const cardStyles = {
 
 
 class TeaCard extends React.Component{
+  handleClick() {
+    alert('Item added to your cart!');
+  }
+  
   render() {
     console.log('this is props in card', this.props)
     return (
@@ -57,7 +61,9 @@ style={cardStyles.profilePicture}
             <p style={cardStyles.teaDescription}>{this.props.tea.description}</p>
           </span>
         </Link>
-        {/* <button type="button"  onClick={() => this.props.deleteRobot(this.props.robot.id)}>X</button> */}
+        <div>
+          <button onClick={this.handleClick}>Add To Cart</button>
+        </div>
       </div>
     );
   }}
