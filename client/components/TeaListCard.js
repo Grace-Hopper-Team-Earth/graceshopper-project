@@ -9,6 +9,7 @@ const cardStyles = {
     height: 200,
     alignItems: 'center',
     justifyContent: 'space-between',
+    margin: 20,
     padding: 10,
     borderRadius: 10,
     boxShadow: '0 0 1px 1px #cec7c759',
@@ -22,10 +23,16 @@ const cardStyles = {
     width: 100,
     borderRadius: '50%',
     padding: 10,
+    margin:10,
     fontWeight: 'bold',
   },
+  teaName: {
+    
+    margin: 10
+  },
   teaDescription: {
-    color: '#584C56'
+    color: '#584C56', 
+    margin: 10
   },
 };
 
@@ -46,7 +53,7 @@ style={cardStyles.profilePicture}
             />
           </span>
           <span>
-            <h3>{this.props.tea.name}</h3>
+            <h3 style={cardStyles.teaName}>{this.props.tea.name}</h3>
             <p style={cardStyles.teaDescription}>{this.props.tea.description}</p>
           </span>
         </Link>
