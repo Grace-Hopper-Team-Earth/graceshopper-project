@@ -23,8 +23,16 @@ export const setAllUsers = (users) => {
 export const fetchSingleUser = (id) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`/api/users/${id}`)
-            dispatch(setSingleUser(data))
+            const token = window.localStorage.getItem('token');
+
+            if (token) {
+                const { data } = await axios.get(`/api/users/${id}`, {
+                    headers: {
+                        authorization: token
+                    }
+                });
+                dispatch(setSingleUser(data))
+            }
         } catch(err) {
             console.error(err)
         }
@@ -34,8 +42,16 @@ export const fetchSingleUser = (id) => {
 export const fetchAllUsers = () => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get('/api/users')
-            dispatch(setAllUsers(data))
+            const token = window.localStorage.getItem('token');
+
+            if (token) {
+                const { data } = await axios.get('/api/users', {
+                    headers: {
+                        authorization: token
+                    }
+                });
+                dispatch(setAllUsers(data))
+            }
         } catch (err) {
             console.error(err)
         }
