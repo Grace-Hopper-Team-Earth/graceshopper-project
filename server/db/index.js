@@ -7,7 +7,7 @@ const Tea = require('./models/Tea')
 const Cart = require('./models/Cart')
 
 //associations could go here!
-User.hasOne(Cart)
+User.hasMany(Cart)
 Cart.belongsTo(User)
 
 Cart.belongsToMany(Tea, {through: 'cart_tea'})
