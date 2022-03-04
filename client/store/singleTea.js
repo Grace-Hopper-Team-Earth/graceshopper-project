@@ -7,10 +7,10 @@ const GOT_SINGLE_TEA = 'GOT_SINGLE_TEA';
 // action creators
 const gotSingleTea = (tea) => {
   return {
-    type: GOT_SINGLE_TEA,
-    tea,
-  };
-};
+    type:GOT_SINGLE_TEA,
+    tea
+  }
+}
 
 // thunk creators
 
@@ -25,6 +25,7 @@ export const fetchSingleTea = (id) => {
 const initialState = {singleTea: {}}
 
 // reducer
+
 const singleTeaReducer = (state = initialState, action) => {
   switch (action.type) {
     case GOT_SINGLE_TEA:
