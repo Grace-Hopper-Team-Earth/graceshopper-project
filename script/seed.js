@@ -15,44 +15,55 @@ async function seed() {
 
   // Creating Users
   const users = await Promise.all([
-    User.create({ username: 'cody', password: '123' }),
-    User.create({ username: 'murphy', password: '123' }),
     User.create({
-      username: 'hector',
+      username: 'cody@gmail.com',
       password: '123',
-      email: 'hector@gmail.com',
+      firstName: 'Cody',
+      lastName: 'Lomax',
+    }),
+    User.create({
+      username: 'john@gmail.com',
+      password: '123',
+      firstName: 'john',
+      lastName: 'doe'
+    }),
+    User.create({
+      username: 'murphy@yahoo.com',
+      password: '123',
+      firstName: 'Murphy',
+      lastName: 'Jones'
+    }),
+    User.create({
+      username: 'hector@gmail.com',
+      password: '123',
       isAdmin: true,
       firstName: 'Hector',
       lastName: 'Hippo',
     }),
     User.create({
-      username: 'katelyn',
+      username: 'katelyn@gmail.com',
       password: '123',
-      email: 'katelyn@gmail.com',
       isAdmin: true,
       firstName: 'Katelyn',
       lastName: 'Miller',
     }),
     User.create({
-      username: 'qina',
+      username: 'qina@gmail.com',
       password: '123',
-      email: 'qina@gmail.com',
       isAdmin: true,
       firstName: 'Qina',
       lastName: 'Zeng',
     }),
     User.create({
-      username: 'jessica',
+      username: 'jessica@gmail.com',
       password: '123',
-      email: 'jessica@gmail.com',
       isAdmin: true,
       firstName: 'Jessica',
       lastName: 'Donig',
     }),
     User.create({
-      username: 'kris',
+      username: 'kris@gmail.com',
       password: '123',
-      email: 'kris@gmail.com',
       isAdmin: true,
       firstName: 'Kris',
       lastName: 'Hill',
@@ -172,9 +183,9 @@ async function seed() {
   return {
     users: {
       cody: users[0],
-      murphy: users[1],
-      hector: users[2],
-      katelyn: users[3],
+      murphy: users[2],
+      hector: users[3],
+      katelyn: users[4],
     },
   };
 }
