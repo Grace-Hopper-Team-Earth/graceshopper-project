@@ -37,12 +37,6 @@ export class AllTeas extends React.Component {
                 <p>
                   Please check back later!
                 </p>
-                <img
-                  className="cartoon"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGZ6C4mqpBIDIymSQoS7sKj3qCO2tIU-RR7w&usqp=CAU"
-                  width="100%"
-                  height="100%"
-                />
 
               </div>
             )}
