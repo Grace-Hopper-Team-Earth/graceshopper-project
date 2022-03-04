@@ -32,19 +32,18 @@ export class AllTeas extends React.Component {
               <div>
                 <h2>What, no robots??</h2>
                 <p>
-                  It looks like we don't have any robots on staff right now.
+                  Oh no...we can't find our teas right now!
                 </p>
                 <p>
-                  Know some great robots? Add them to our database using the
-                  form above.
+                  Please check back later!
                 </p>
                 <img
                   className="cartoon"
-                  src="https://imgc.artprintimages.com/img/print/a-dusty-robot-plugs-itself-in-new-yorker-cartoon_u-l-pgqu1p0.jpg?artPerspective=n"
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGZ6C4mqpBIDIymSQoS7sKj3qCO2tIU-RR7w&usqp=CAU"
                   width="100%"
                   height="100%"
                 />
-                <Link to="/robotsjokes">Want more robot jokes?</Link>
+
               </div>
             )}
             {/* {teas.map((tea) => (
