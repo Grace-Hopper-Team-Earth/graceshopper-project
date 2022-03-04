@@ -10,8 +10,8 @@ const Navbar = ({handleClick, isLoggedIn}) => (
     height="100"/>
     <h1>Hippo Tea</h1>
     <h4>Made to order bubble teas</h4>
-    
-    
+
+
     <nav>
       {/*Jess commented out these lines to get the logged in experience... {isLoggedIn ? ( */}
         <div>
