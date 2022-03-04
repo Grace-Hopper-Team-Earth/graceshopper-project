@@ -63,12 +63,30 @@ router.get("/:credential", async (req, res, next) => {
 })
 
 
-router.put('/:cartid', async (req, res, next) => {
+// router.put('/:cartid', async (req, res, next) => {
+//   try {
+//     const cartToUpdate = await Cart.findByPk(req.params.cartid);
+//     console.log('this is req.body',req.body)
+//     res.send(await cartToUpdate.update(req.body));
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+router.post('/:teaId/:credential', async (req, res, next)=>{
   try {
-    const cartToUpdate = await Cart.findByPk(req.params.cartid);
-    console.log('this is req.body',req.body)
-    res.send(await cartToUpdate.update(req.body));
+    let user = await User.findByToken(req.params.credential)
+    let cart =await Cart.findOne(
+      {
+        where: {
+          userId: user.id,
+          checkedOut: false
+        },
+        include: [Tea]
+      }
+    )
+    res.send(cart)
   } catch (error) {
-    next(error);
+    next(error)
   }
-});
+})
