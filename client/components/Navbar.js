@@ -43,7 +43,6 @@ const Navbar = ({ handleClick, isLoggedIn, user }) => {
             <Link to='/teas'>Bubble Teas</Link>
             <Link to='/login'>Login</Link>
             <Link to='/signup'>Sign Up</Link>
-            <Link to='/carts'>Cart</Link>
           </div>
         )}
       </nav>
