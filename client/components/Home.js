@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom'
  * COMPONENT
  */
 export const Home = props => {
-  const {username} = props
+  const {firstName} = props
+  const {isLoggedIn} = props
 
   return (
     <div>
-      <h2 style={{fontFamily: "montserrat"}} >Welcome, {username}</h2>
+      <h2 style={{fontFamily: "montserrat"}} >Welcome, {isLoggedIn ? firstName + "!" : 'friend!'}</h2>
       <Link to={"/teas"}>
           <h2
           style={{fontFamily: "montserrat", justifyContent: 'center'}}>See all teas</h2>
@@ -28,7 +29,8 @@ export const Home = props => {
  */
 const mapState = state => {
   return {
-    username: state.auth.username
+    firstName: state.auth.firstName,
+    isLoggedIn: !!state.auth.id
   }
 }
 

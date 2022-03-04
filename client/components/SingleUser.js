@@ -16,7 +16,7 @@ class SingleUser extends React.Component {
             <div>
                 <h3 style={{"marginBottom": "5px"}}>{user.firstName + " " + user.lastName}</h3>
                 <h5 style={{"color": "red", "marginTop": "5px"}}>{user.isAdmin ? 'Admin' : ''}</h5>
-                <h4>Email: {user.email}</h4>
+                <h4>Email: {user.username}</h4>
                 <h4>{user.address}</h4>
             </div>
         )
