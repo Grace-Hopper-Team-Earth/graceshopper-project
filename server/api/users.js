@@ -36,7 +36,9 @@ router.get('/', isLoggedIn, isAdmin, async (req, res, next) => {
 router.get('/:id', isLoggedIn, async (req, res, next) => {
   try {
     if (parseInt(req.params.id) === req.user.dataValues.id || req.user.dataValues.isAdmin === true) {
+
         const singleUser = await User.findByPk(req.params.id, {
+        attributes: ['id', 'username', 'firstName', 'lastName', 'address', 'isAdmin'],
         include: [Cart]
       })
       res.json(singleUser)
