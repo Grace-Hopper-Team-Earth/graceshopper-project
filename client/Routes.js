@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { Login, Signup } from './components/AuthForm';
 import Home from './components/Home';
 import { me } from './store';
 import AllTeas from './components/AllTeas';
@@ -10,6 +9,9 @@ import SingleUser from './components/SingleUser';
 import AdminPortal from './components/AdminPortal';
 import AllUsers from './components/AllUsers';
 import Cart from './components/Cart';
+import { Login } from './AuthFormLogin';
+import { Signup } from './AuthFormSignup';
+
 /**
  * COMPONENT
  */

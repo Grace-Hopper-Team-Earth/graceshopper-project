@@ -14,7 +14,7 @@ export const Home = props => {
       <h2 style={{fontFamily: "montserrat"}} >Welcome, {isLoggedIn ? firstName + "!" : 'friend!'}</h2>
       <Link to={"/teas"}>
           <h2
-          style={{fontFamily: "montserrat", justifyContent: 'center'}}>See all teas</h2>
+          style={{fontFamily: "montserrat", justifyContent: 'center'}}>See All Teas</h2>
           <img
             style={{ width: '400px', height: '400px', radius: '200px' }}
             src="https://images.unsplash.com/photo-1556741533-4020f1bf081c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"

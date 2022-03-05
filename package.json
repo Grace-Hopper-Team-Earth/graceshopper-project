@@ -1,5 +1,5 @@
 {
-  "name": "HippoTea",
+  "name": "hippo-tea",
   "version": "2.0.0",
   "description": "Selling bubble tea",
   "main": "index.js",
@@ -27,7 +27,9 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
     "pg": "^8.5.1",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "sweetalert2": "^11.4.4",
+    "sweetalert2-react-content": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
