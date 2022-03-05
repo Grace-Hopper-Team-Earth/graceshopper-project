@@ -66,9 +66,7 @@ const mapDispatch = dispatch => {
       const formName = evt.target.name
       const username = evt.target.username.value
       const password = evt.target.password.value
-      const firstName = evt.target.firstName.value
-      const lastName = evt.target.lastName.value
-      dispatch(authenticate(username, password, firstName, lastName, formName))
+      dispatch(authenticate(username, password, formName))
     }
   }
 }

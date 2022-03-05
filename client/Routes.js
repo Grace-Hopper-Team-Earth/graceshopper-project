@@ -9,8 +9,8 @@ import SingleUser from './components/SingleUser';
 import AdminPortal from './components/AdminPortal';
 import AllUsers from './components/AllUsers';
 import Cart from './components/Cart';
-import { Login } from './AuthFormLogin';
-import { Signup } from './AuthFormSignup';
+import { Login } from './components/AuthFormLogin';
+import { Signup } from './components/AuthFormSignup';
 
 /**
  * COMPONENT
