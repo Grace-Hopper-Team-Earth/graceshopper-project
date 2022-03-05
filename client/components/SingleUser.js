@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSingleUser } from '../store/users';
+import UpdateProfile from './UpdateProfile';
 
 class SingleUser extends React.Component {
     componentDidMount() {
@@ -18,6 +19,8 @@ class SingleUser extends React.Component {
                 <h5 style={{"color": "red", "marginTop": "5px"}}>{user.isAdmin ? 'Admin' : ''}</h5>
                 <h4>Email: {user.username}</h4>
                 <h4>{user.address}</h4>
+                <button>Edit Profile</button>
+                <UpdateProfile userId={this.props.match.params.id} />
             </div>
         )
     }
