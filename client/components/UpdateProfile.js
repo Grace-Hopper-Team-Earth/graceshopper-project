@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { fetchSingleUser, _updateUser } from '../store/users';
 
 class UpdateProfile extends React.Component {
@@ -39,9 +40,8 @@ class UpdateProfile extends React.Component {
     }
 
     handleSubmit (evt) {
-        this.setState({
-            [evt.target.name]: evt.target.value
-        })
+        evt.preventDefault();
+        this.props.updateProfile({ ...this.props.user, ...this.state})
     }
 
     handleChange (evt) {
@@ -51,6 +51,7 @@ class UpdateProfile extends React.Component {
     }
 
     render() {
+        console.log(this.state.firstName)
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -91,6 +92,7 @@ class UpdateProfile extends React.Component {
                     />
 
                     <button type="submit" >Update Profile</button>
+                    {/* <Link to='/users/:id'><button>Discard</button></Link> */}
                 </form>
             </div>
         )

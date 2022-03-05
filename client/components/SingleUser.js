@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSingleUser } from '../store/users';
-import { Link, Route } from 'react-router-dom';
 import UpdateProfile from './UpdateProfile';
 
 class SingleUser extends React.Component {
