@@ -89,6 +89,8 @@ class UpdateProfile extends React.Component {
                         onChange={this.handleChange}
                         placeholder="Delivery Address..."
                     />
+
+                    <button type="submit" >Update Profile</button>
                 </form>
             </div>
         )
