@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { fetchSingleUser, _updateUser } from '../store/users';
 
 class UpdateProfile extends React.Component {
@@ -9,7 +8,7 @@ class UpdateProfile extends React.Component {
         this.state = {
             firstName: '',
             lastName: '',
-            email: '',
+            username: '',
             address: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +21,7 @@ class UpdateProfile extends React.Component {
             this.setState({
                 firstName: this.props.user.firstName || '',
                 lastName: this.props.user.lastName || '',
-                email: this.props.user.username || '',
+                username: this.props.user.username || '',
                 address: this.props.user.address || ''
             })
         }
@@ -33,7 +32,7 @@ class UpdateProfile extends React.Component {
             this.setState({
                 firstName: this.props.user.firstName || '',
                 lastName: this.props.user.lastName || '',
-                email: this.props.user.username || '',
+                username: this.props.user.username || '',
                 address: this.props.user.address || ''
             })
         }
@@ -45,6 +44,7 @@ class UpdateProfile extends React.Component {
     }
 
     handleChange (evt) {
+        console.log(evt.target)
         this.setState({
             [evt.target.name]: evt.target.value
         })
@@ -73,11 +73,11 @@ class UpdateProfile extends React.Component {
                         placeholder="Last Name..."
                     />
 
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="username">Email</label>
                     <input 
                         type="text"
-                        name="email"
-                        value={this.state.email}
+                        name="username"
+                        value={this.state.username}
                         onChange={this.handleChange}
                         placeholder="Email..."
                     /> 
@@ -92,7 +92,7 @@ class UpdateProfile extends React.Component {
                     />
 
                     <button type="submit" >Update Profile</button>
-                    {/* <Link to='/users/:id'><button>Discard</button></Link> */}
+                    <button>Discard</button>
                 </form>
             </div>
         )

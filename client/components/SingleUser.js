@@ -20,7 +20,6 @@ class SingleUser extends React.Component {
 
     componentDidMount() {
         const userId = this.props.match.params.id;
-        console.log(userId)
         this.props.getSingleUser(userId);
     }
 
@@ -36,7 +35,7 @@ class SingleUser extends React.Component {
                 <h3 style={{"marginBottom": "5px"}}>{user.firstName + " " + user.lastName}</h3>
                 <h5 style={{"color": "red", "marginTop": "5px"}}>{user.isAdmin ? 'Admin' : ''}</h5>
                 <h4>Email: {user.username}</h4>
-                <h4>{user.address}</h4>
+                <h4>Address: {user.address ? user.address : 'No address on file'}</h4>
                 <button type="submit" onClick={() => this.dislayUpdateForm()}>Edit Profile</button>
             </div>
         )
