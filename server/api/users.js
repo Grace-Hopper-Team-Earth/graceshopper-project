@@ -52,3 +52,16 @@ router.get('/:id', isLoggedIn, async (req, res, next) => {
   }
 })
 
+// PUT /api/users/:id
+router.put('/:id', async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.id, {
+      include: [Cart]
+    })
+    const updatedUser = await user.update(req.body)
+    res.json(updatedUser)
+  } catch (err) {
+    next(err)
+  }
+})
+
