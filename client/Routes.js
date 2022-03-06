@@ -11,6 +11,7 @@ import AllUsers from './components/AllUsers';
 import Cart from './components/Cart';
 import { Login } from './components/AuthFormLogin';
 import { Signup } from './components/AuthFormSignup';
+import AdminTeas from './components/AdminTeas';
 
 /**
  * COMPONENT
@@ -35,6 +36,7 @@ class Routes extends Component {
             <Route exact path='/carts' component={Cart} />
             <Route path='/adminportal' component={AdminPortal} />
             <Route exact path='/users' component={AllUsers} />
+            <Route exact path='/adminteas' component={AdminTeas} />
             <Redirect to='/home' />
           </Switch>
         ) : (

@@ -10,6 +10,9 @@ const AdminPortal = ({firstName}) => {
             <Link to="/users">
                 <h2>View All Current Users</h2>
             </Link>
+            <Link to="/adminteas">
+                <h2>View All Current Teas</h2>
+            </Link>
         </div>
     )
 }

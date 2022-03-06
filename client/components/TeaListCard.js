@@ -81,3 +81,4 @@ style={cardStyles.profilePicture}
   };
   
   export default connect(mapStateToProps, mapDispatchToProps)(TeaCard);
+  

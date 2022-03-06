@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const GOT_SINGLE_TEA = 'GOT_SINGLE_TEA';
 
-// action creators
+// Action Creators
 const gotSingleTea = (tea) => {
   return {
     type:GOT_SINGLE_TEA,
@@ -12,7 +12,7 @@ const gotSingleTea = (tea) => {
   }
 }
 
-// thunk creators
+// Thunk Creators
 
 export const fetchSingleTea = (id) => {
   return async (dispatch) => {
@@ -22,11 +22,13 @@ export const fetchSingleTea = (id) => {
   };
 };
 
-const initialState = {singleTea: {}}
+// Initial State
+const initialState = {
+  singleTea: {}
+}
 
-// reducer
-
-const singleTeaReducer = (state = initialState, action) => {
+// Reducer
+export default function singleTeaReducer (state = initialState, action) {
   switch (action.type) {
     case GOT_SINGLE_TEA:
       return {...state, singleTea: action.tea};
@@ -34,5 +36,3 @@ const singleTeaReducer = (state = initialState, action) => {
       return state;
   }
 };
-
-export default singleTeaReducer;
