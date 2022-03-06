@@ -37,6 +37,7 @@ const cardStyles = {
 };
 
 
+
 class TeaCard extends React.Component{
   handleClick() {
     alert('Item added to your cart!');

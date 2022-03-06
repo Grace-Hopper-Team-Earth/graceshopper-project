@@ -1,10 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setCart } from '../store/cart';
+import { Link } from 'react-router-dom';
+
 
 class Cart extends React.Component {
+  constructor() {
+    super()
+  }
   componentDidMount() {
     console.log('props inside componentDidMount', this.props);
+    this.props.isLoggedIn ?
+    this.props.getUserCart(localStorage.token)
+    :
     this.props.setCart();
   }
   render() {
