@@ -8,10 +8,14 @@ export class AdminTeas extends React.Component {
       this.props.fetchAllTeas();
     }
 
+    handleSubmit(evt) {
+      evt.preventDefault();
+      this.props.deleteTea({ ...this.props.tea, ...this.state });
+    }
+
     render() {
       const teas = this.props.allTeas;
       console.log('this.props in render:', this.props)
-      console.log('teas inside render:', teas)
       return (
         <div>
           <h2 className="section-title">Current Tea Inventory:</h2>
@@ -26,7 +30,7 @@ export class AdminTeas extends React.Component {
                     <button
                       type='submit'
                       className='remove-tea'
-                      onClick={() => this.props.deleteTea(tea.id)}
+                      onClick={() => this.handleSubmit(tea.id)}
                     >
                     Delete This Item
                     </button>
