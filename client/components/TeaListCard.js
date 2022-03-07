@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {fetchSingleTea} from '../store/singleTea';
+import { addTeaToCart } from '../store/cart';
 
 const cardStyles = {
   container: {
@@ -37,8 +38,14 @@ const cardStyles = {
 };
 
 
+
 class TeaCard extends React.Component{
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this)
+  }
   handleClick() {
+    this.props.addTeaToCart(this.props.tea, this.props.isLoggedIn)
     alert('Item added to your cart!');
   }
   
@@ -62,6 +69,7 @@ style={cardStyles.profilePicture}
           </span>
         </Link>
         <div>
+        {/* <button type="button"  onClick={() => this.props.tea.addTeaToCart(this.props.tea.id)}>Add to cart</button> */}
           <button onClick={this.handleClick}>Add To Cart</button>
         </div>
       </div>
@@ -77,6 +85,7 @@ style={cardStyles.profilePicture}
   const mapDispatchToProps = (dispatch) => {
     return {
       fetchSingleTea: (id) => dispatch(fetchSingleTea(id)),
+      addTeaToCart: (id) => dispatch(addTeaToCart(id))
     };
   };
   
