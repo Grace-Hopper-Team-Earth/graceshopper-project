@@ -9,7 +9,6 @@ class AllUsers extends React.Component {
     }
     
     render() {
-        console.log(this.props.allUsers[6])
         const users = this.props.allUsers;
         
         return (

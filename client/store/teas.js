@@ -4,7 +4,7 @@ import axios from 'axios';
 const GET_ALL_TEAS = 'GET_ALL_TEAS';
 const ADD_NEW_TEA = 'ADD_NEW_TEA';
 const UPDATE_TEA = 'UPDATE_TEA';
-// const DELETE_TEA = 'DELETE_TEA';
+const DELETE_TEA = 'DELETE_TEA';
 
 // ACTION CREATORS
 const setTeas = (teas) => ({
@@ -14,18 +14,18 @@ const setTeas = (teas) => ({
 
 const addNewTea = (tea) => ({
   type: ADD_NEW_TEA,
-  tea,
-});
+  tea
+})
 
 const _updateTea = (tea) => ({
   type: UPDATE_TEA,
-  tea,
-});
+  tea
+})
 
-// const _deleteTea = (tea) => ({
-//   type: DELETE_TEA,
-//   tea
-// })
+const _deleteTea = (tea) => ({
+  type: DELETE_TEA,
+  tea
+})
 
 // THUNK CREATORS
 export const fetchAllTeas = () => {
@@ -71,22 +71,25 @@ export const updateTea = (tea, history) => {
   };
 };
 
-// export const deleteTea = (id) => {
-//   return async (dispatch) => {
-//     try {
-//       const { data: tea } = await axios.delete(`/api/teas/${id}`);
-//       dispatch(_deleteTea(tea));
-//     } catch (err) {
-//       console.log('Delete Failed', err)
-//     }
-//   }
-// }
+export const deleteTea = (id, history) => {
+  return async (dispatch) => {
+    try {
+      const { data: tea } = await axios.delete(`/api/adminteas/${id}`);
+      dispatch(_deleteTea(tea));
+      history.push('/adminteas');
+    } catch (err) {
+      console.log('Delete Failed', err)
+    }
+  }
+}
 
-// Initial State
+// INITIAL STATE
 const initialState = {
-  allTeas: [],
+    allTeas: [],
+    singleTea: {}
 };
 
+// REDUCER
 export default function teasReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_TEAS:
@@ -95,8 +98,8 @@ export default function teasReducer(state = initialState, action) {
       return { ...state, singleTea: action.tea };
     case UPDATE_TEA:
       return state.map((tea) => (tea.id === action.tea.id ? action.tea : tea));
-    // case DELETE_TEA:
-    //   return state.filter((tea) => tea.id !== action.tea.id);
+    case DELETE_TEA:
+      return state.filter((tea) => tea.id !== action.tea.id);
     default:
       return state;
   }

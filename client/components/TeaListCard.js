@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {fetchSingleTea} from '../store/singleTea';
+import { addTeaToCart } from '../store/cart';
+import { fetchSingleUser } from '../store/users';
 
 const cardStyles = {
   container: {
@@ -37,8 +39,14 @@ const cardStyles = {
 };
 
 
+
 class TeaCard extends React.Component{
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this)
+  }
   handleClick() {
+    this.props.addTeaToCart(this.props.tea, this.props.isLoggedIn)
     alert('Item added to your cart!');
   }
   
@@ -62,22 +70,26 @@ style={cardStyles.profilePicture}
           </span>
         </Link>
         <div>
+        {/* <button type="button"  onClick={() => this.props.tea.addTeaToCart(this.props.tea.id)}>Add to cart</button> */}
           <button onClick={this.handleClick}>Add To Cart</button>
         </div>
       </div>
     );
   }}
 
-  const mapStateToProps = ({singleTea}) => {
+  const mapStateToProps = (state) => {
     return {
-      singleTea: singleTea.singleTea
+      singleTea: state.singleTea.singleTea,
     };
   };
   
   const mapDispatchToProps = (dispatch) => {
     return {
       fetchSingleTea: (id) => dispatch(fetchSingleTea(id)),
+      addTeaToCart: (id) => dispatch(addTeaToCart(id)),
+      fetchSingleUser: (id) => dispatch(fetchSingleUser(id))
     };
   };
   
   export default connect(mapStateToProps, mapDispatchToProps)(TeaCard);
+  

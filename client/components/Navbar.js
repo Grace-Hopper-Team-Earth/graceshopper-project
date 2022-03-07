@@ -13,7 +13,7 @@ const Navbar = ({ handleClick, isLoggedIn, user }) => {
       />
       <h1>Hippo Tea</h1>
       <h4>Made to order bubble teas</h4>
-
+    
       <nav>
         {isLoggedIn && user.isAdmin ? (
           <div>
@@ -32,6 +32,7 @@ const Navbar = ({ handleClick, isLoggedIn, user }) => {
             <Link to='/home'>Home</Link>
             <Link to='/teas'>Bubble Teas</Link>
             <Link to={`/users/${user.id}`}>Profile</Link>
+            <Link to={`/carts`}>Cart</Link>
             <a href='#' onClick={handleClick}>
               Logout
             </a>
@@ -43,7 +44,6 @@ const Navbar = ({ handleClick, isLoggedIn, user }) => {
             <Link to='/teas'>Bubble Teas</Link>
             <Link to='/login'>Login</Link>
             <Link to='/signup'>Sign Up</Link>
-            <Link to='/carts'>Cart</Link>
           </div>
         )}
       </nav>
