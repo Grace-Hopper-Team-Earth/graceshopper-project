@@ -29,7 +29,7 @@ router.get("/:credential", async (req, res, next) => {
       )
       res.send(foundCart)
     } else {
-      let user = await User.findBy(req.params.credential)
+      let user = await User.findByToken(req.params.credential)
       let cart = await Cart.findOne(
         {
           where: {
@@ -39,7 +39,7 @@ router.get("/:credential", async (req, res, next) => {
           include: [Tea]
         }
       )
-
+      console.log("CART>>>>>>>>>>>>", cart)
       res.send(cart)
     }
 
@@ -53,7 +53,7 @@ router.get("/:credential", async (req, res, next) => {
 //hecks to see if the requested tea is already in the users cart
 //- If it is, it increments the number of this item by one 
 //-If it is not, if adds qty=1 of the item. 
-router.post(':teaId/:credential', async (req, res, next) => {
+router.post('/:teaId/:credential', async (req, res, next) => {
   try {
     //find the correct user and cart--cart that is not yet checkout out and belongs to user
     let user = await User.findByToken(req.params.credential);
