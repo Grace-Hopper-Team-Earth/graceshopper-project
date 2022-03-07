@@ -90,7 +90,6 @@ export default function (state = initialCartState, action) {
     //else, set state to include item  
     case ADD_TO_CART: {
       const itemInCart = state.cartItems.find((item) => {
-        console.log('this is item in cart', itemInCart)
         return item.id === action.selectedTeas.id
       })
       if (itemInCart) {
