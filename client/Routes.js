@@ -9,6 +9,7 @@ import SingleUser from './components/SingleUser';
 import AdminPortal from './components/AdminPortal';
 import AllUsers from './components/AllUsers';
 import Cart from './components/Cart';
+import AddTea from './components/AddTea';
 import { Login } from './components/AuthFormLogin';
 import { Signup } from './components/AuthFormSignup';
 
@@ -33,8 +34,9 @@ class Routes extends Component {
             <Route path='/teas/:id' component={SingleTea} />
             <Route path='/users/:id' component={SingleUser} />
             <Route exact path='/carts' component={Cart} />
-            <Route path='/adminportal' component={AdminPortal} />
+            <Route exact path='/adminportal' component={AdminPortal} />
             <Route exact path='/users' component={AllUsers} />
+            <Route path='/adminportal/add' component={AddTea} />
             <Redirect to='/home' />
           </Switch>
         ) : (
