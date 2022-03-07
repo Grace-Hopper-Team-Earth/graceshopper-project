@@ -13,14 +13,17 @@ const AdminPortal = ({firstName}) => {
             <Link to="/adminteas">
                 <h2>View All Current Teas</h2>
             </Link>
+            <Link to='/adminportal/add'>
+            <h2>Add More Milk Tea</h2>
+            </Link>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
-    return {
-        firstName: state.auth.firstName
-    }
-}
+  return {
+    firstName: state.auth.firstName,
+  };
+};
 
-export default connect(mapStateToProps)(AdminPortal)
+export default connect(mapStateToProps)(AdminPortal);

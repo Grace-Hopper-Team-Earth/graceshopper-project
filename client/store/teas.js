@@ -9,8 +9,8 @@ const DELETE_TEA = 'DELETE_TEA';
 // ACTION CREATORS
 const setTeas = (teas) => ({
   type: GET_ALL_TEAS,
-  teas
-})
+  teas,
+});
 
 const addNewTea = (tea) => ({
   type: ADD_NEW_TEA,
@@ -36,20 +36,24 @@ export const fetchAllTeas = () => {
     } catch (err) {
       console.log(err);
     }
-  }
-}
+  };
+};
 
 export const createTea = (tea, history) => {
   return async (dispatch) => {
     try {
-      const { data: created } = await axios.post('/api/teas', tea);
+      const { data: created } = await axios.post('/api/teas/add', tea, {
+        headers: {
+          Authorization: window.localStorage.token,
+        },
+      });
       dispatch(addNewTea(created));
-      history.push('/teas');
+      // history.push('/teas');
     } catch (err) {
-      console.log('Unable to create tea', err)
+      console.log('Unable to create tea', err);
     }
-  }
-}
+  };
+};
 
 export const updateTea = (tea, history) => {
   return async (dispatch) => {
@@ -74,7 +78,6 @@ export const deleteTea = (id) => {
   }
 }
 
-
 // INITIAL STATE
 const initialState = {
     allTeas: [],
@@ -83,17 +86,19 @@ const initialState = {
 
 
 // REDUCER
-export default function teasReducer (state = initialState, action) {
+
+export default function teasReducer(state = initialState, action) {
   switch (action.type) {
     case GET_ALL_TEAS:
-      return {...state, allTeas: action.teas};
+      return { ...state, allTeas: action.teas };
     case ADD_NEW_TEA:
-      return [...state, action.tea];
-    case UPDATE_TEA:
-      return state.map((tea) =>
-      tea.id === action.tea.id ? action.tea : tea);
-    case DELETE_TEA:
-      return state.filter((tea) => tea.id !== action.tea.id);
+      return { ...state, singleTea: action.tea };
+    // case UPDATE_TEA:
+    //   return state.map((tea) =>
+    //   tea.id === action.tea.id ? action.tea : tea);
+    // case DELETE_TEA:
+    //   return state.filter((tea) => tea.id !== action.tea.id);
+
     default:
       return state;
   }
