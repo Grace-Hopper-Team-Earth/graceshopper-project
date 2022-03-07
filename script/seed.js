@@ -20,12 +20,14 @@ async function seed() {
       password: '123',
       firstName: 'Cody',
       lastName: 'Lomax',
+      address: 'The Doghouse \n Backyard'
     }),
     User.create({
       username: 'john@gmail.com',
       password: '123',
       firstName: 'john',
-      lastName: 'doe'
+      lastName: 'doe',
+      address: 'Nowhere St \n Anytown \n USA'
     }),
     User.create({
       username: 'murphy@yahoo.com',
@@ -39,6 +41,7 @@ async function seed() {
       isAdmin: true,
       firstName: 'Hector',
       lastName: 'Hippo',
+      address: 'Mudpit no.1 \n Tanzania'
     }),
     User.create({
       username: 'katelyn@gmail.com',
@@ -67,6 +70,7 @@ async function seed() {
       isAdmin: true,
       firstName: 'Kris',
       lastName: 'Hill',
+      address: '123 Sesame St \n Manhattan, NY'
     }),
   ]);
 
@@ -74,7 +78,7 @@ async function seed() {
   const teas = [
     {
       name: 'Classic Hippo Milk Tea',
-      description: 'made with classic black tea with milk',
+      description: 'Made with classic black tea with milk',
       price: 6,
       imageUrl:
         'https://abeautifulmess.com/wp-content/uploads/2013/08/no-fail-boba-pearl-method.jpg',
