@@ -28,3 +28,14 @@ router.get('/', isLoggedIn, isAdmin, async (req, res, next) => {
     next(err);
   }
 })
+
+// DELETE /api/adminteas
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const tea = await Tea.findByPk(req.params.id);
+    await tea.destroy();
+    res.send(tea);
+  } catch (error) {
+    next(error);
+  }
+});

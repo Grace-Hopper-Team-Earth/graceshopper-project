@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const AdminPortal = ({firstName}) => {
+const AdminPortal = ({ firstName }) => {
     return (
         <div>
             <h3>Welcome back, {firstName}</h3>
@@ -14,7 +14,7 @@ const AdminPortal = ({firstName}) => {
                 <h2>View All Current Teas</h2>
             </Link>
             <Link to='/adminportal/add'>
-            <h2>Add More Milk Tea</h2>
+                <h2>Add More Milk Tea</h2>
             </Link>
         </div>
     )
