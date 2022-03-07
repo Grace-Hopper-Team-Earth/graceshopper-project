@@ -46,3 +46,19 @@ router.post('/add', async (req, res, next) => {
     next(err);
   }
 });
+
+// PUT/UPDATE api/teas/:id
+router.put('/:id', async (req, res, next) => {
+  try {
+    const { isAdmin } = await User.findByToken(req.headers.authorization);
+    if (isAdmin === false) {
+      let err = new Error('Need authorization to update product');
+      err.status = 401;
+      throw err;
+    }
+    const teaToUpdate = await Tea.findByPk(req.params.id);
+    res.send(await teaToUpdate.update(req.body));
+  } catch (err) {
+    next(err);
+  }
+});
