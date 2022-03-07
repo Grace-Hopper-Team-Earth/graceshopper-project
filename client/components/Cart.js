@@ -23,23 +23,12 @@ class Cart extends React.Component {
     const cartItems = cart.cartItems || []
 
     // let currentTotal = 0
-    // const itemsInCart = cartItems.map((item)=> {
-    //   return (
-    //     <div key={item.id}>
-    //       <ul>
-    //         <li item={item} key={item.id}>
-    //           {item.name}
-    //         </li>
-    //       </ul>
-    //     </div>
-    //   )
-    // })
 
     return (
       <div>
         <div>Items In Cart</div>
         <div>
-          {cart["cartItems"].map((cartItem) => (
+          {cartItems.map((cartItem) => (
             <div key={cartItem.id}>
               <div>Each Item</div>
               <ul>
