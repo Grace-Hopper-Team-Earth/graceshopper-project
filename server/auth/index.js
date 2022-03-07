@@ -28,14 +28,15 @@ router.get('/me', async (req, res, next) => {
   try {
     req.user = await User.findByToken(req.headers.authorization)
     if (req.user) {
-      const {id, username, password, firstName, lastName, address} = req.user
+      const {id, username, password, firstName, lastName, address, isAdmin} = req.user
       res.json({
         id,
         username,
         password,
         firstName,
         lastName,
-        address
+        address,
+        isAdmin
       })
     }
   } catch (ex) {
