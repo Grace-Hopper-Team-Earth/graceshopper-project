@@ -29,7 +29,7 @@ router.get("/:credential", async (req, res, next) => {
       )
       res.send(foundCart)
     } else {
-      let user = await User.findByToken(req.params.credential)
+      let user = await User.findBy(req.params.credential)
       let cart = await Cart.findOne(
         {
           where: {

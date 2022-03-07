@@ -32,7 +32,7 @@ const Navbar = ({ handleClick, isLoggedIn, user }) => {
             <Link to='/home'>Home</Link>
             <Link to='/teas'>Bubble Teas</Link>
             <Link to={`/users/${user.id}`}>Profile</Link>
-            <Link to='/carts'>Cart</Link>
+            <Link to={`/carts`}>Cart</Link>
             <a href='#' onClick={handleClick}>
               Logout
             </a>
