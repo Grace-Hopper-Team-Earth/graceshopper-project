@@ -14,7 +14,7 @@ const _setCart = (cartItems) => {
   };
 };
 
-const _getUserCart = (cart) => {
+const _getUserCart = (cartItems) => {
   return {
     type: GET_USER_CART, 
     cartItems
@@ -22,6 +22,7 @@ const _getUserCart = (cart) => {
 }
 
 const _addToCart = (tea, itemQty = 1) => {
+  console.log("TEA OBJECT>>>>>>>", tea)
   return {
     type: ADD_TO_CART,
     selectedTeas: {...tea, itemQty}
@@ -40,9 +41,10 @@ export const getUserCart = (credential = localStorage.token) => async dispatch =
   try {
     //retrieve a users cart at '/api/carts/:credential
     const {data} = await axios.get(`/api/carts/${credential}`)
+    console.log("data in getUserCart", data)
     dispatch(_getUserCart(data))
   } catch (error) {
-    next(error)
+    console.error(error)
   }
 }
 
@@ -51,12 +53,16 @@ export const getUserCart = (credential = localStorage.token) => async dispatch =
 //if logged in, makes axios request to api/carts/:teaid/:credential
 export const addTeaToCart = (tea, isLoggedIn) => {
   return async (dispatch, getState) => {
-    if (!isLoggedIn) {
+    if (false) {
       dispatch(_addToCart(tea))
       localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
     } else {
       try {
-        await axios.post(`/api/carts/${tea.id}/${localStorage.token}`)
+        console.log("TEAID>>>>>>>>>", tea.id)
+        console.log("CREDENTIAL>>>>>>>>>>", localStorage.token)
+        const {data} = await axios.post(`/api/carts/${tea.id}/${localStorage.token}`)
+        console.log("TEAS IN DATA", data.teas)
+        dispatch(_addToCart(tea))
       } catch(error) {
         console.log(error)
       }
@@ -74,31 +80,33 @@ const initialCartState = {
 };
 
 export default function (state = initialCartState, action) {
+  console.log("STATE>>>>>>>>>>", state)
+  console.log("ACTION", action)
   switch (action.type) {
     case SET_CART:
-      return { ...state, cartItems: [...action.cartItems] };
+      return { ...state, cartItems: [...action.cartItems.teas] };
     //determines whether the item is already in cart
     //if yes, add action quantity to the quantity in cart
     //else, set state to include item  
     case ADD_TO_CART: {
-      // const itemInCart = state.cartItems.find((item) => {
-      //   console.log('this is item in cart', itemInCart)
-      //   return item.id === action.product.id
-      // })
-      // if (itemInCart) {
-      //   action.product.itemQty +=itemInCart.itemQty
-      //   return {
-      //     ...state,
-      //     cartItems: state.cartItems.map((item) => {
-      //       return item === existingItem ? action.product : item
-      //     })
-      //   }
-      // } else {
-      //   return {
-      //     ...state, cartItems:  [...state.cartItems, action.product]
-      //   }
-      // }
-      return { ...state, cartItems: [...state.cartItems, action.selectedTeas ] };
+      const itemInCart = state.cartItems.find((item) => {
+        console.log('this is item in cart', itemInCart)
+        return item.id === action.selectedTeas.id
+      })
+      if (itemInCart) {
+        action.selectedTeas.itemQty +=itemInCart.itemQty
+        return {
+          ...state,
+          cartItems: state.cartItems.teas.map((item) => {
+            return item === existingItem ? action.selectedTeas : item
+          })
+        }
+      } else {
+        return {
+          ...state, cartItems:  [...state.cartItems, action.selectedTeas]
+        }
+      }
+      // return { ...state, cartItems: [...state.cartItems, action.selectedTeas ] };
     }
     default:
       return state;

@@ -18,30 +18,24 @@ class Cart extends React.Component {
   }
   render() {
     const { cart } = this.props;
+    console.log("TYPE OF CART ITEMS", typeof cart.cartItems)
+    console.log("CART ITEMS TEAS", cart["cartItems"][0])
     const cartItems = cart.cartItems || []
+
     // let currentTotal = 0
-    const itemsInCart = cartItems.map((item)=> {
-      return (
-        <div>
-          <ul>
-            <li item = {item} key = {item.id}>
-              {item.name}
-            </li>
-          </ul>
-        </div>
-      )
-    })
 
     return (
       <div>
         <div>Items In Cart</div>
         <div>
-          This section still under construction
-          {cart.cartItems.map((cartItem) => {
+          {cartItems.map((cartItem) => (
             <div key={cartItem.id}>
               <div>Each Item</div>
-            </div>;
-          })}
+              <ul>
+                <li>{cartItem.name}</li>
+              </ul>
+            </div>
+          ))}
         </div>
         <div>Total: {cart.subTotal}</div>
         <button>Checkout</button>
@@ -51,6 +45,7 @@ class Cart extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(">>>>>>>>", state.cart)
   return {
     cart: state.cart,
     isLoggedIn: !!state.auth.id,
