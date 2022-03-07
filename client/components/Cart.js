@@ -19,7 +19,7 @@ class Cart extends React.Component {
   render() {
     const { cart } = this.props;
     const cartItems = cart.cartItems || []
-    let currentTotal = 0
+    // let currentTotal = 0
     const itemsInCart = cartItems.map((item)=> {
       return (
         <div>
@@ -36,6 +36,7 @@ class Cart extends React.Component {
       <div>
         <div>Items In Cart</div>
         <div>
+          This section still under construction
           {cart.cartItems.map((cartItem) => {
             <div key={cartItem.id}>
               <div>Each Item</div>

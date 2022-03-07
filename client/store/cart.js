@@ -17,7 +17,7 @@ const _setCart = (cartItems) => {
 const _getUserCart = (cart) => {
   return {
     type: GET_USER_CART, 
-    cart
+    cartItems
   }
 }
 
@@ -81,22 +81,24 @@ export default function (state = initialCartState, action) {
     //if yes, add action quantity to the quantity in cart
     //else, set state to include item  
     case ADD_TO_CART: {
-      const itemInCart = state.cartItems.find((item) =>{
-        return item.id === action.product.id
-      })
-      if (itemInCart) {
-        action.product.itemQty +=itemInCart.itemQty
-        return {
-          ...state,
-          cartItems: state.cartItems.map((item) => {
-            return item === existingItem ? action.product : item
-          })
-        }
-      } else {
-        return {
-          ...state, cartItems:  [...state.cartItems, action.product]
-        }
-      }
+      // const itemInCart = state.cartItems.find((item) => {
+      //   console.log('this is item in cart', itemInCart)
+      //   return item.id === action.product.id
+      // })
+      // if (itemInCart) {
+      //   action.product.itemQty +=itemInCart.itemQty
+      //   return {
+      //     ...state,
+      //     cartItems: state.cartItems.map((item) => {
+      //       return item === existingItem ? action.product : item
+      //     })
+      //   }
+      // } else {
+      //   return {
+      //     ...state, cartItems:  [...state.cartItems, action.product]
+      //   }
+      // }
+      return { ...state, cartItems: [...state.cartItems, action.selectedTeas ] };
     }
     default:
       return state;
