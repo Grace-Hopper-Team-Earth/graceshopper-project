@@ -13,7 +13,7 @@ const isLoggedIn = async (req, res, next) => {
 
 const isAdmin = (req, res, next) => {
   if (!req.user.isAdmin) {
-    res.status(403).send("Oops...Admin Only!")
+    res.status(403).send("Oops... Admin Only!")
   } else {
     next();
   }
@@ -26,7 +26,6 @@ router.get('/', isLoggedIn, isAdmin, async (req, res, next) => {
       attributes: ['id', 'username', 'firstName', 'lastName', 'address', 'isAdmin']
     })
     res.json(users)
-  
   } catch (err) {
     next(err)
   }
@@ -43,7 +42,7 @@ router.get('/:id', isLoggedIn, async (req, res, next) => {
       })
       res.json(singleUser)
     } else {
-      const error = Error("Oops...this isn't you!");
+      const error = Error("Oops... this isn't you!");
       error.status = 403
       throw error
     }
@@ -64,4 +63,3 @@ router.put('/:id', async (req, res, next) => {
     next(err)
   }
 })
-
