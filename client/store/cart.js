@@ -25,7 +25,7 @@ const _getUserCart = (cartItems) => {
 const _addToCart = (tea, itemQty = 1) => {
   return {
     type: ADD_TO_CART,
-    tea: { ...tea, itemQty },
+    tea: {...tea, itemQty}
   };
 };
 
@@ -70,8 +70,8 @@ export const addTeaToCart = (tea, isLoggedIn) => {
         const { data } = await axios.post(
           `/api/carts/${tea.id}/${localStorage.token}`
         );
-        console.log(tea);
-        dispatch(_addToCart(tea));
+        // dispatch(_addToCart(tea));
+        dispatch(getUserCart(localStorage.token))
       } catch (error) {
         console.log(error);
       }
@@ -79,33 +79,18 @@ export const addTeaToCart = (tea, isLoggedIn) => {
   };
 };
 
-// export const deleteTeaFromCart = (tea) => {
-//   console.log('this is tea',tea)
-//   return async (dispatch) => {
-//     try {
-//       await axios.delete(
-//         `/api/carts/${tea.cartteas.cartId}/${tea.cartteas.teaId}`
-//       );
-//       dispatch(_deleteFromCart(tea));
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-// };
-
-export const removeTeaFromCart = (id, history) => {
-  console.log('this is id', id)
+export const removeTeaFromCart = (cartItem) => {
   return async (dispatch) => {
     try {
-      const { data: tea } = await axios.delete(`/api/carts/${id}`);
-      dispatch(_deleteFromCart(tea));
-      history.push('/carts');
+      console.log("CART ITEM", cartItem)
+      await axios.delete(`/api/carts/${cartItem.carttea.cartId}/${cartItem.carttea.teaId}`);
+      // dispatch(_deleteFromCart(tea));
+      dispatch(getUserCart(localStorage.token))
     } catch (err) {
       console.log('Delete Failed', err)
     }
   }
 }
-//I didn't set up logged user vs guest
 
 // reducer
 
@@ -116,17 +101,15 @@ const initialCartState = {
 };
 
 export default function (state = initialCartState, action) {
-  console.log("STATE>>>>>>>>>>", state.cartItems);
-  console.log("ACTION", action);
   switch (action.type) {
     case SET_CART:
       return { ...state, cartItems: [...action.cartItems.teas] };
 
     case ADD_TO_CART: {
-      console.log(action.tea);
       const itemInCart = state.cartItems.find((item) => {
         return item.id === action.tea.id;
       });
+
       if (itemInCart) {
         action.tea.itemQty += itemInCart.itemQty;
         return {
@@ -143,21 +126,12 @@ export default function (state = initialCartState, action) {
       }
     }
     case GET_USER_CART:
-      // const teasInCart = [];
-
-      // for (let i = 0; i < action.cartItems.teas.length; i++) {
-      //   teasInCart.push({
-      //     ...action.cartItems.teas[i],
-      //     itemQty: action.cartItems.teas[i].carttea.itemQty,
-      //     cartId: action.cartItems.teas[i].carttea.cartId,
-      //     teaId: action.cartItems.teas[i].carttea.teaId
-      //   })
-      // }
       return {
         ...state,
         ...action.cartItems,
         cartItems: [...action.cartItems.teas],
       }
+
       case REMOVE_FROM_CART: {
         return {
           ...state, 
