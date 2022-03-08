@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCart, getUserCart } from '../store/cart';
+import { setCart, getUserCart, removeTeaFromCart } from '../store/cart';
 import { Link } from 'react-router-dom';
 
 
 class Cart extends React.Component {
   constructor() {
     super()
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
     console.log('props inside componentDidMount', this.props);
@@ -15,6 +16,10 @@ class Cart extends React.Component {
     this.props.getUserCart(localStorage.token)
     :
     this.props.setCart();
+  }
+
+  handleSubmit() {
+    this.props.removeTeaFromCart(this.props.tea);
   }
   render() {
     const { cart } = this.props;
@@ -29,6 +34,7 @@ class Cart extends React.Component {
       })
       currentTotal = orderTotal.reduce((a,b) => a + b)
     }
+    console.log('this is props', this.props)
 
     return (
       <div>
@@ -36,7 +42,12 @@ class Cart extends React.Component {
         <div>
           {cartItems.map((cartItem) => (
             <div key={cartItem.id}>
-              <ul>{cartItem.name}</ul>
+              <ul>{cartItem.name} 
+              <button className="remove-item"
+              onClick={() => this.handleSubmit(cartItem.id)}
+               >
+        Remove From Cart
+        </button></ul>
             </div>
           ))}
         </div>
@@ -59,7 +70,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setCart: () => dispatch(setCart()),
-    getUserCart: () => dispatch(getUserCart())
+    getUserCart: () => dispatch(getUserCart()),
+    removeTeaFromCart: (id) => dispatch(removeTeaFromCart(id))
 
   };
 };
