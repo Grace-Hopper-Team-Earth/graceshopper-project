@@ -83,7 +83,7 @@ router.post('/:teaId/:credential', async (req, res, next) => {
       await teaInCart.update({...teaInCart, itemQty: ++teaInCart.itemQty})
     }
     //respond with the updated cart
-    res.send(cart)
+    res.send(teaInCart)
   } catch (error) {
     next (error)
   }
