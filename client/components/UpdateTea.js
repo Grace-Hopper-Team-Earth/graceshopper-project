@@ -4,8 +4,8 @@ import { updateTea } from '../store/teas';
 import { gotSingleTea, fetchSingleTea } from '../store/singleTea';
 
 class UpdateTea extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       name: '',
       description: '',
@@ -17,6 +17,8 @@ class UpdateTea extends React.Component {
   }
 
   componentDidMount() {
+    console.log('props inside componentDidMount', this.props);
+    console.log('this.props.match.params.id', this.props.match.params.id);
     this.props.fetchSingleTea(this.props.match.params.id);
   }
 
@@ -55,7 +57,7 @@ class UpdateTea extends React.Component {
             <input
               name='name'
               onChange={this.handleChange}
-              value={name}
+              value={this.state.name}
               placeholder='Enter the name of product'
             />
           </div>
@@ -65,7 +67,7 @@ class UpdateTea extends React.Component {
             <input
               name='description'
               onChange={this.handleChange}
-              value={description}
+              value={this.state.description}
               placeholder='Enter the description of product'
             />
           </div>
@@ -75,7 +77,7 @@ class UpdateTea extends React.Component {
             <input
               name='price'
               onChange={this.handleChange}
-              value={price}
+              value={this.state.price}
               placeholder='Enter the price of product'
             />
           </div>
@@ -85,7 +87,7 @@ class UpdateTea extends React.Component {
             <input
               name='imageUrl'
               onChange={this.handleChange}
-              value={imageUrl}
+              value={this.state.imageUrl}
               placeholder='Enter the image of product'
             />
           </div>
@@ -96,12 +98,16 @@ class UpdateTea extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  tea: state.singleTea,
+// const mapStateToProps = (state) => ({
+//   tea: state.singleTea,
+// });
+
+const mapStateToProps = ({ singleTea }) => ({
+  singleTea,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  updateTea: (tea) => dispatch(updateTea(tea)),
+const mapDispatchToProps = (dispatch, { history }) => ({
+  updateTea: (tea) => dispatch(updateTea(tea, history)),
   fetchSingleTea: (id) => dispatch(fetchSingleTea(id)),
   clearTea: () => dispatch(gotSingleTea({})),
 });
