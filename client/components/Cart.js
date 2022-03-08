@@ -3,19 +3,17 @@ import { connect } from 'react-redux';
 import { setCart, getUserCart, removeTeaFromCart } from '../store/cart';
 import { Link } from 'react-router-dom';
 
-
 class Cart extends React.Component {
   constructor() {
-    super()
+    super();
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
     console.log('props inside componentDidMount', this.props);
-    
-    !this.props.isLoggedIn ?
-    this.props.getUserCart(localStorage.token)
-    :
-    this.props.setCart();
+
+    !this.props.isLoggedIn
+      ? this.props.getUserCart(localStorage.token)
+      : this.props.setCart();
   }
 
   handleSubmit() {
@@ -23,18 +21,18 @@ class Cart extends React.Component {
   }
   render() {
     const { cart } = this.props;
-    const cartItems = cart.cartItems || []
-    console.log("CART ITEMS", cartItems)
+    const cartItems = cart.cartItems || [];
+    console.log('CART ITEMS', cartItems);
 
-    let currentTotal = 0
+    let currentTotal = 0;
 
     if (cartItems.length > 0) {
       const orderTotal = cartItems.map((tea) => {
-        return (tea.price * tea.itemQty)
-      })
-      currentTotal = orderTotal.reduce((a,b) => a + b)
+        return tea.price * tea.itemQty;
+      });
+      currentTotal = orderTotal.reduce((a, b) => a + b);
     }
-    console.log('this is props', this.props)
+    console.log('this is props', this.props);
 
     return (
       <div>
@@ -42,28 +40,32 @@ class Cart extends React.Component {
         <div>
           {cartItems.map((cartItem) => (
             <div key={cartItem.id}>
-              <ul>{cartItem.name} 
-              <button className="remove-item"
-              onClick={() => this.handleSubmit(cartItem.id)}
-               >
-        Remove From Cart
-        </button></ul>
+              <ul>
+                {cartItem.name}
+                <button
+                  className='remove-item'
+                  onClick={() => this.handleSubmit(cartItem.id)}
+                >
+                  Remove From Cart
+                </button>
+              </ul>
             </div>
           ))}
         </div>
         <div>Order Total: ${currentTotal}</div>
-        <button>Checkout</button>
+        {/* <button>Checkout</button> */}
+        <Link to='/checkout'>Checkout</Link>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(">>>>>>>>", state.cart)
+  console.log('>>>>>>>>', state.cart);
   return {
     cart: state.cart,
     isLoggedIn: !!state.auth.id,
-    userId: state.auth.id
+    userId: state.auth.id,
   };
 };
 
@@ -71,8 +73,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setCart: () => dispatch(setCart()),
     getUserCart: () => dispatch(getUserCart()),
-    removeTeaFromCart: (id) => dispatch(removeTeaFromCart(id))
-
+    removeTeaFromCart: (id) => dispatch(removeTeaFromCart(id)),
   };
 };
 
