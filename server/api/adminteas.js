@@ -31,6 +31,18 @@ router.get('/', isLoggedIn, isAdmin, async (req, res, next) => {
   }
 });
 
+// GET /api/teas/:id
+router.get('/:id', async (req, res, next) => {
+  try {
+    const tea = await Tea.findByPk(req.params.id)
+    if (tea) res.json(tea)
+    else res.sendStatus(404)
+  } catch (err) {
+    next(err)
+  }
+});
+
+
 // DELETE /api/adminteas
 router.delete('/:id', async (req, res, next) => {
   try {

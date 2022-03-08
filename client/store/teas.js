@@ -48,7 +48,7 @@ export const createTea = (tea, history) => {
         },
       });
       dispatch(addNewTea(created));
-      // history.push('/teas');
+      history.push('/');
     } catch (err) {
       console.log('Unable to create tea', err);
     }
@@ -68,7 +68,7 @@ export const updateTea = (tea, history) => {
         }
       );
       dispatch(_updateTea(updated));
-      history.push('/adminteas');
+      history.push('/adminteas')
     } catch (err) {
       console.log('Update Failed', err);
     }
@@ -78,8 +78,8 @@ export const updateTea = (tea, history) => {
 export const deleteTea = (id, history) => {
   return async (dispatch) => {
     try {
-      const { data: tea } = await axios.delete(`/api/adminteas/${id}`);
-      dispatch(_deleteTea(tea));
+      await axios.delete(`/api/adminteas/${id}`);
+      dispatch(fetchAllTeas());
       history.push('/adminteas');
     } catch (err) {
       console.log('Delete Failed', err);
@@ -108,7 +108,7 @@ export default function teasReducer(state = initialState, action) {
         ),
       };
     case DELETE_TEA:
-      return state.filter((tea) => tea.id !== action.tea.id);
+      return state.allTeas.filter((tea) => tea.id !== action.tea.id);
     default:
       return state;
   }
