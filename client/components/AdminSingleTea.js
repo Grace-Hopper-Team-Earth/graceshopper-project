@@ -4,9 +4,11 @@ import { connect } from 'react-redux';
 import UpdateTea from './UpdateTea';
 
 export class AdminSingleTea extends React.Component {
+
   componentDidMount() {
     this.props.fetchSingleTea(this.props.match.params.id);
   }
+
   render() {
     const { tea } = this.props;
     return (
@@ -14,7 +16,7 @@ export class AdminSingleTea extends React.Component {
         <img src={tea.imageUrl} width='200' height='200' border-radius='30px' />
         <h1>{tea.name}</h1>
         <div>{tea.description}</div>
-        <div>Price: ${tea.price}</div>
+        <div>Price: $ {tea.price}</div>
         <div>
           <UpdateTea {...this.props} />
         </div>
