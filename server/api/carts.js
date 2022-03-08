@@ -37,7 +37,6 @@ router.get("/:credential", async (req, res, next) => {
         include: [Tea],
       });
 
-      console.log("GET USER CART ROUTE", cart)
       res.send(cart);
     }
   } catch (error) {
@@ -119,19 +118,19 @@ router.put(":teaId/:credential", async (req, res, next) => {
 //DELETE/api/carts/:cartId/:teaId -deletes a tea from a user's open cart
 router.delete("/:cartId/:teaId", async (req, res, next) => {
   try {
-    console.log("TEA>>>>>>>>>>>>>", req.params.teaId)
-    console.log("CART>>>>>>>>>>>>>", req.params.cartId)
-    const teaToDelete = await Tea.findByPk(req.params.teaId)
-    const cart = await Cart.findByPk(req.params.cartId)
-    // const teaInCart = await CartTea.findOne({
-    //   where: {
-    //     cartId: req.params.cartId,
-    //     teaId: req.params.teaId,
-    //   },
-    // });
-    // await teaInCart.destroy();
+    const carttea = await CartTea.findOne({
+      where: {
+        teaId: req.params.teaId,
+        cartId: req.params.cartId
+      }
+    })
 
-    cart.removeTea(teaToDelete)
+    if (carttea.itemQty > 1) {
+      await carttea.update({itemQty: --carttea.itemQty })
+    } else {
+      await carttea.destroy()
+    }
+
     res.sendStatus(200);
   } catch (error) {
     next(error);
