@@ -66,7 +66,6 @@ router.post('/:teaId/:credential', async (req, res, next) => {
         include: [Tea]
       }
     )
-    console.log("THIS IS MY CART>>>>>>>", cart[0].dataValues.id)
     //Search for a record of the selected tea in the users open cart, and either adds it or increments qty based on serach result
     const teaInCart = await CartTea.findOne(
       {
