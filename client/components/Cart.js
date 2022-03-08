@@ -30,12 +30,16 @@ class Cart extends React.Component {
         <div>
           {cartItems.map((cartItem) => (
             <div key={cartItem.id}>
-              <ul>{cartItem.name} 
+              <ul>
+                <span style={{"marginRight": "10px"}}>
+                  {cartItem.carttea.itemQty}
+                </span>
+              {cartItem.name} 
               <button className="remove-item"
-              onClick={() => this.props.removeTeaFromCart(cartItem, this.props.history)}
-               >
-        Remove From Cart
-        </button></ul>
+              onClick={() => this.props.removeTeaFromCart(cartItem, this.props.history)}>
+              Remove From Cart
+              </button>
+            </ul>
             </div>
           ))}
         </div>
