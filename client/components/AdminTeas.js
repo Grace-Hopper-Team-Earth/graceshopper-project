@@ -12,7 +12,6 @@ export class AdminTeas extends React.Component {
       this.props.fetchAllTeas();
     }
 
-
     render() {
       const teas = this.props.allTeas;
       return (
@@ -46,6 +45,9 @@ export class AdminTeas extends React.Component {
   }
 }
 
+const mapStateToProps = ({ allTeas }) => ({
+  allTeas: allTeas.allTeas
+})
 
 const mapDispatchToProps = (dispatch, { history }) => ({
   fetchAllTeas: () => dispatch(fetchAllTeas()),
