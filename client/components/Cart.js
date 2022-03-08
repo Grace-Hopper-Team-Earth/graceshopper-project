@@ -1,63 +1,79 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setCart, getUserCart } from '../store/cart';
+import { setCart, getUserCart, removeTeaFromCart } from '../store/cart';
 import { Link } from 'react-router-dom';
-
 
 class Cart extends React.Component {
   constructor() {
-    super()
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
     console.log('props inside componentDidMount', this.props);
-    //I am a bit confused by isLoggedIn...not sure how it works :(
-    this.props.isLoggedIn ?
-    this.props.getUserCart(localStorage.token)
-    :
-    this.props.setCart();
+
+    !this.props.isLoggedIn
+      ? this.props.getUserCart(localStorage.token)
+      : this.props.setCart();
+  }
+
+  handleSubmit() {
+    this.props.removeTeaFromCart(this.props.tea);
   }
   render() {
     const { cart } = this.props;
-    console.log("TYPE OF CART ITEMS", typeof cart.cartItems)
-    console.log("CART ITEMS TEAS", cart["cartItems"][0])
-    const cartItems = cart.cartItems || []
+    const cartItems = cart.cartItems || [];
+    console.log('CART ITEMS', cartItems);
 
-    // let currentTotal = 0
+    let currentTotal = 0;
+
+    if (cartItems.length > 0) {
+      const orderTotal = cartItems.map((tea) => {
+        return tea.price * tea.itemQty;
+      });
+      currentTotal = orderTotal.reduce((a, b) => a + b);
+    }
+    console.log('this is props', this.props);
 
     return (
       <div>
-        <div>Items In Cart</div>
+        <div>Items in your cart</div>
         <div>
           {cartItems.map((cartItem) => (
             <div key={cartItem.id}>
-              <div>Each Item</div>
               <ul>
-                <li>{cartItem.name}</li>
+                {cartItem.name}
+                <button
+                  className='remove-item'
+                  onClick={() => this.handleSubmit(cartItem.id)}
+                >
+                  Remove From Cart
+                </button>
               </ul>
             </div>
           ))}
         </div>
-        <div>Total: {cart.subTotal}</div>
-        <button>Checkout</button>
+        <div>Order Total: ${currentTotal}</div>
+        {/* <button>Checkout</button> */}
+        <Link to='/checkout'>Checkout</Link>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(">>>>>>>>", state.cart)
+  console.log('>>>>>>>>', state.cart);
   return {
     cart: state.cart,
     isLoggedIn: !!state.auth.id,
-    userId: state.auth.id
+    userId: state.auth.id,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     setCart: () => dispatch(setCart()),
-    getUserCart: () => dispatch(getUserCart())
-
+    getUserCart: () => dispatch(getUserCart()),
+    removeTeaFromCart: (id) => dispatch(removeTeaFromCart(id)),
   };
 };
 

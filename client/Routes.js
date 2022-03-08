@@ -13,6 +13,9 @@ import AddTea from './components/AddTea';
 import { Login } from './components/AuthFormLogin';
 import { Signup } from './components/AuthFormSignup';
 import AdminTeas from './components/AdminTeas';
+import AdminSingleTea from './components/AdminSingleTea';
+import Checkout from './components/Checkout';
+import CheckoutDone from './components/CheckoutDone';
 
 /**
  * COMPONENT
@@ -38,7 +41,10 @@ class Routes extends Component {
             <Route exact path='/adminportal' component={AdminPortal} />
             <Route exact path='/users' component={AllUsers} />
             <Route exact path='/adminteas' component={AdminTeas} />
+            <Route path='/adminteas/:id' component={AdminSingleTea} />
             <Route path='/adminportal/add' component={AddTea} />
+            <Route exact path='/checkout' component={Checkout} />
+            <Route path='/checkout/done' component={CheckoutDone} />
             <Redirect to='/home' />
           </Switch>
         ) : (

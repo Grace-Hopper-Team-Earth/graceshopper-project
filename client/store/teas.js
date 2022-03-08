@@ -14,18 +14,18 @@ const setTeas = (teas) => ({
 
 const addNewTea = (tea) => ({
   type: ADD_NEW_TEA,
-  tea
-})
+  tea,
+});
 
 const _updateTea = (tea) => ({
   type: UPDATE_TEA,
-  tea
-})
+  tea,
+});
 
 const _deleteTea = (tea) => ({
   type: DELETE_TEA,
-  tea
-})
+  tea,
+});
 
 // THUNK CREATORS
 export const fetchAllTeas = () => {
@@ -58,11 +58,15 @@ export const createTea = (tea, history) => {
 export const updateTea = (tea, history) => {
   return async (dispatch) => {
     try {
-      const { data: updated } = await axios.put(`/api/teas/${tea.id}`, tea, {
-        headers: {
-          Authorization: window.localStorage.token,
-        },
-      });
+      const { data: updated } = await axios.put(
+        `/api/adminteas/${tea.id}`,
+        tea,
+        {
+          headers: {
+            Authorization: window.localStorage.token,
+          },
+        }
+      );
       dispatch(_updateTea(updated));
       history.push('/adminteas')
     } catch (err) {
@@ -78,15 +82,15 @@ export const deleteTea = (id, history) => {
       dispatch(fetchAllTeas());
       history.push('/adminteas');
     } catch (err) {
-      console.log('Delete Failed', err)
+      console.log('Delete Failed', err);
     }
-  }
-}
+  };
+};
 
 // INITIAL STATE
 const initialState = {
-    allTeas: [],
-    singleTea: {}
+  allTeas: [],
+  singleTea: {},
 };
 
 // REDUCER
@@ -97,7 +101,12 @@ export default function teasReducer(state = initialState, action) {
     case ADD_NEW_TEA:
       return { ...state, singleTea: action.tea };
     case UPDATE_TEA:
-      return state.map((tea) => (tea.id === action.tea.id ? action.tea : tea));
+      return {
+        ...state,
+        allTeas: state.allTeas.map((tea) =>
+          tea.id === action.tea.id ? action.tea : tea
+        ),
+      };
     case DELETE_TEA:
       return state.allTeas.filter((tea) => tea.id !== action.tea.id);
     default:

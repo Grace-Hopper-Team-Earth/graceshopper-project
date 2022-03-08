@@ -35,25 +35,17 @@ export class AdminTeas extends React.Component {
                 </div>
               )
             )) : (
-              <div>
-                <h2>Wait, where's all the tea??</h2>
-                <p>
-                  Oh no...we can't find our teas right now!
-                </p>
-                <p>
-                  Please check back later!
-                </p>
-
-              </div>
-            )}
-        </div>
-      )
-    }
+          <div>
+            <h2>Wait, where's all the tea??</h2>
+            <p>Oh no...we can't find our teas right now!</p>
+            <p>Please check back later!</p>
+          </div>
+        )}
+      </div>
+    )
+  }
 }
 
-const mapStateToProps = ({ allTeas }) => ({
-  allTeas: allTeas.allTeas
-});
 
 const mapDispatchToProps = (dispatch, { history }) => ({
   fetchAllTeas: () => dispatch(fetchAllTeas()),
