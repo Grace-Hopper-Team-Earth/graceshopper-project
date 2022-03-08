@@ -40,7 +40,7 @@ class Cart extends React.Component {
           ))}
         </div>
         <div>Order Total: ${currentTotal}</div>
-        <button>Checkout</button>
+        <Link to="/checkout">Checkout</Link>
       </div>
     );
   }
