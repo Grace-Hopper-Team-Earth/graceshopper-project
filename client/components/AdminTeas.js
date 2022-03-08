@@ -17,19 +17,22 @@ export class AdminTeas extends React.Component {
       return (
         <div>
           <h2 className="section-title">Current Tea Inventory:</h2>
+          <Link to='/adminportal/add'><h2>Add New Tea</h2></Link>
           {teas && teas.length > 0 ? (
               teas.map((tea) => (
                 <div key={tea.id}>
                   <div>
-                    <h3>{tea.name}: {tea.description}</h3>
-                    <p>Price: $ {tea.price} </p>
-                    <Link to={`/teas/${tea.id}`}>View Details</Link>
+                    <h3>{tea.name}</h3>
+                    <span><h4>{tea.description}</h4> Price: $ {tea.price}</span>
+                    <p>
+                    <Link to={`/adminteas/${tea.id}`}>Edit This Product</Link>
                     <button
                       type='submit'
                       onClick={() => this.props.deleteTea(tea.id)}
                     >
                     Delete This Item
                     </button>
+                    </p>
                   </div>
                 </div>
               )

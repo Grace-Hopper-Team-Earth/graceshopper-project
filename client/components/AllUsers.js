@@ -32,7 +32,7 @@ class AllUsers extends React.Component {
                   <td align='center'>{user.username}</td>
                   <td align='center'>{user.isAdmin ? 'Admin' : ''}</td>
                   <td align='center'>
-                    {<Link to={`/users/${user.id}`}>See Detalis</Link>}
+                    {<Link to={`/users/${user.id}`}>See Details</Link>}
                   </td>
                 </tr>
               ))}
