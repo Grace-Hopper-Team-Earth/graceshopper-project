@@ -36,6 +36,8 @@ router.get("/:credential", async (req, res, next) => {
         },
         include: [Tea],
       });
+
+      console.log("GET USER CART ROUTE", cart)
       res.send(cart);
     }
   } catch (error) {
@@ -58,7 +60,7 @@ router.post("/:teaId/:credential", async (req, res, next) => {
         checkedOut: false,
       },
       //load all of the teas in the cart
-      include: [Tea],
+      include: [Tea, CartTea],
     });
     //Search for a record of the selected tea in the users open cart, and either adds it or increments qty based on serach result
     const teaInCart = await CartTea.findOne({
@@ -74,8 +76,9 @@ router.post("/:teaId/:credential", async (req, res, next) => {
       //if it is already in the cart, increment quantity by 1 using magic method
       await teaInCart.update({ ...teaInCart, itemQty: ++teaInCart.itemQty });
     }
+
     //respond with the updated cart
-    res.send(teaInCart);
+    res.send(cart);
   } catch (error) {
     next(error);
   }
@@ -116,14 +119,19 @@ router.put(":teaId/:credential", async (req, res, next) => {
 //DELETE/api/carts/:cartId/:teaId -deletes a tea from a user's open cart
 router.delete("/:cartId/:teaId", async (req, res, next) => {
   try {
-    const teaInCart = await CartTea.findOne({
-      where: {
-        cartId: req.params.cartId,
-        teaId: req.params.teaId,
-      },
-    });
-    await teaInCart.destroy();
+    console.log("TEA>>>>>>>>>>>>>", req.params.teaId)
+    console.log("CART>>>>>>>>>>>>>", req.params.cartId)
+    const teaToDelete = await Tea.findByPk(req.params.teaId)
+    const cart = await Cart.findByPk(req.params.cartId)
+    // const teaInCart = await CartTea.findOne({
+    //   where: {
+    //     cartId: req.params.cartId,
+    //     teaId: req.params.teaId,
+    //   },
+    // });
+    // await teaInCart.destroy();
 
+    cart.removeTea(teaToDelete)
     res.sendStatus(200);
   } catch (error) {
     next(error);
