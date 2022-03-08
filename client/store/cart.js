@@ -90,7 +90,7 @@ export default function (state = initialCartState, action) {
         return item.id === action.tea.id
       })
       if (itemInCart) {
-        action.tea.carttea.itemQty +=itemInCart.carttea.itemQty
+        action.tea.itemQty +=itemInCart.itemQty
         return {
           ...state,
           cartItems: state.cartItems.map((item) => {

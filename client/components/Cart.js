@@ -25,7 +25,7 @@ class Cart extends React.Component {
 
     if (cartItems.length > 0) {
       const orderTotal = cartItems.map((tea) => {
-        return (tea.price * tea.carttea.itemQty)
+        return (tea.price * tea.itemQty)
       })
       currentTotal = orderTotal.reduce((a,b) => a + b)
     }
