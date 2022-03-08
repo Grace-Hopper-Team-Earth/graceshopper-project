@@ -39,7 +39,6 @@ router.get("/:credential", async (req, res, next) => {
           include: [Tea]
         }
       )
-      console.log("CART>>>>>>>>>>>>", cart)
       res.send(cart)
     }
 
@@ -57,7 +56,7 @@ router.post('/:teaId/:credential', async (req, res, next) => {
   try {
     //find the correct user and cart--cart that is not yet checkout out and belongs to user
     let user = await User.findByToken(req.params.credential);
-    let cart = await Cart.findOne(
+    let cart = await Cart.findOrCreate(
       {
         where: {
           userId: user.id,
@@ -67,19 +66,18 @@ router.post('/:teaId/:credential', async (req, res, next) => {
         include: [Tea]
       }
     )
-
     //Search for a record of the selected tea in the users open cart, and either adds it or increments qty based on serach result
     const teaInCart = await CartTea.findOne(
       {
         where: {
-          cartId: cart.id,
+          cartId: cart[0].dataValues.id,
           teaId: req.params.teaId
         }
       }
     )
     //If this tea is not in the cart, use the magic method to add it to the user's cart
     if(!teaInCart) {
-      await cart.addTea(req.params.teaId)
+      await cart[0].addTea(req.params.teaId)
     } else {
       //if it is already in the cart, increment quantity by 1 using magic method
       await teaInCart.update({...teaInCart, itemQty: ++teaInCart.itemQty})

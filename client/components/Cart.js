@@ -18,26 +18,30 @@ class Cart extends React.Component {
   }
   render() {
     const { cart } = this.props;
-    console.log("TYPE OF CART ITEMS", typeof cart.cartItems)
-    console.log("CART ITEMS TEAS", cart["cartItems"][0])
     const cartItems = cart.cartItems || []
+    console.log(cartItems)
 
-    // let currentTotal = 0
+    let currentTotal = 0
+
+    if (cartItems.length > 0) {
+      const orderTotal = cartItems.map((tea) => {
+        return (tea.price * tea.itemQty)
+      })
+
+      currentTotal = orderTotal.reduce((a,b) => a + b)
+    }
 
     return (
       <div>
-        <div>Items In Cart</div>
+        <div>Items in your cart</div>
         <div>
           {cartItems.map((cartItem) => (
             <div key={cartItem.id}>
-              <div>Each Item</div>
-              <ul>
-                <li>{cartItem.name}</li>
-              </ul>
+              <ul>{cartItem.name}</ul>
             </div>
           ))}
         </div>
-        <div>Total: {cart.subTotal}</div>
+        <div>Order Total: ${currentTotal}</div>
         <button>Checkout</button>
       </div>
     );
