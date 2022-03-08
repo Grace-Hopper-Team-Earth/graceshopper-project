@@ -10,8 +10,8 @@ class Cart extends React.Component {
   }
   componentDidMount() {
     console.log('props inside componentDidMount', this.props);
-    //I am a bit confused by isLoggedIn...not sure how it works :(
-    this.props.isLoggedIn ?
+    
+    !this.props.isLoggedIn ?
     this.props.getUserCart(localStorage.token)
     :
     this.props.setCart();
@@ -19,15 +19,14 @@ class Cart extends React.Component {
   render() {
     const { cart } = this.props;
     const cartItems = cart.cartItems || []
-    console.log(cartItems)
+    console.log("CART ITEMS", cartItems)
 
     let currentTotal = 0
 
     if (cartItems.length > 0) {
       const orderTotal = cartItems.map((tea) => {
-        return (tea.price * tea.itemQty)
+        return (tea.price * tea.carttea.itemQty)
       })
-
       currentTotal = orderTotal.reduce((a,b) => a + b)
     }
 
