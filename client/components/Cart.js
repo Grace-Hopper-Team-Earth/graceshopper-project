@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { setCart, getUserCart, removeTeaFromCart } from '../store/cart';
 import { Link } from 'react-router-dom';
 
-
 class Cart extends React.Component {
   componentDidMount() {
     !this.props.isLoggedIn ?
@@ -16,7 +15,7 @@ class Cart extends React.Component {
     const { cart } = this.props;
     const cartItems = cart.cartItems || []
 
-    let currentTotal = 0
+    let currentTotal = 0;
 
     if (cartItems.length > 0) {
       const orderTotal = cartItems.map((tea) => {
@@ -51,7 +50,7 @@ const mapStateToProps = (state) => {
   return {
     cart: state.cart,
     isLoggedIn: !!state.auth.id,
-    userId: state.auth.id
+    userId: state.auth.id,
   };
 };
 
@@ -60,7 +59,6 @@ const mapDispatchToProps = (dispatch) => {
     setCart: () => dispatch(setCart()),
     getUserCart: () => dispatch(getUserCart()),
     removeTeaFromCart: (cartItem, history) => dispatch(removeTeaFromCart(cartItem, history))
-
   };
 };
 
