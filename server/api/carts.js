@@ -51,7 +51,7 @@ router.get("/:credential", async (req, res, next) => {
 //-If it is not, if adds qty=1 of the item.
 router.post("/:teaId/:credential", async (req, res, next) => {
   try {
-    //find the correct user and cart--cart that is not yet checkout out and belongs to user
+    //find the correct user and cart--cart that is not yet check out and belongs to user
     let user = await User.findByToken(req.params.credential);
     let cart = await Cart.findOrCreate({
       where: {

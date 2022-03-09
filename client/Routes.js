@@ -57,6 +57,8 @@ class Routes extends Component {
             <Route path='/teas/:id' component={SingleTea} />
             <Route path='/users/:id' component={SingleUser} />
             <Route path='/carts' component={Cart} />
+            <Route exact path='/checkout' component={Checkout} />
+            <Route path='/checkout/done' component={CheckoutDone} />
           </Switch>
         )}
       </div>
