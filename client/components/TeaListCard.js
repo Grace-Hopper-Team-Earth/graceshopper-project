@@ -1,9 +1,13 @@
 import React from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
 import {fetchSingleTea} from '../store/singleTea';
 import { addTeaToCart } from '../store/cart';
 import { fetchSingleUser } from '../store/users';
+const MySwal = withReactContent(Swal);
+
 
 const cardStyles = {
   container: {
@@ -47,7 +51,14 @@ class TeaCard extends React.Component{
   }
   handleClick() {
     this.props.addTeaToCart(this.props.tea, this.props.isLoggedIn)
-    alert('Item added to your cart!');
+    MySwal.fire({
+      title: 'Woohoo!',
+      text: 'Item added to your cart!',
+      icon: 'success',
+      iconColor: '#1FA2F8',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#1FA2F8'
+    })
   }
   
   render() {
@@ -57,7 +68,7 @@ class TeaCard extends React.Component{
         <Link to={`/teas/${this.props.tea.id}`}>
           <span>
             <img
-style={cardStyles.profilePicture}
+              style={cardStyles.profilePicture}
               src={this.props.tea.imageUrl}
               width="50"
               height="50"

@@ -1,7 +1,10 @@
 import React from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { fetchSingleTea } from '../store/singleTea';
 import { connect } from 'react-redux';
 import { addTeaToCart } from '../store/cart';
+const MySwal = withReactContent(Swal);
 
 export class SingleTea extends React.Component {
   constructor(props) {
@@ -14,7 +17,14 @@ export class SingleTea extends React.Component {
 
   handleClick() {
     this.props.addTeaToCart(this.props.tea, this.props.isLoggedIn)
-    alert('Item added to your cart!');
+    MySwal.fire({
+      title: 'Woohoo!',
+      text: 'Item added to your cart!',
+      icon: 'success',
+      iconColor: '#1FA2F8',
+      confirmButtonText: 'OK',
+      confirmButtonColor: '#1FA2F8'
+    })
   }
   render() {
     console.log('this is props ____', this.props);
@@ -27,7 +37,7 @@ export class SingleTea extends React.Component {
             border-radius="30px" />
         <h1>{tea.name}</h1>
         <div>{tea.description}</div>
-        <div>Price: ${tea.price}</div>
+        <div>Price: $ {tea.price}</div>
         <div>
           <button onClick={this.handleClick}>Add To Cart</button>
           {/* <button type="button"  onClick={() => this.props.tea.addTeaToCart(tea.id)}>Add to cart</button> */}

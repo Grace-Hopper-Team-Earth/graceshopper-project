@@ -44,19 +44,6 @@ class AllUsers extends React.Component {
   }
 }
 
-{
-  /* {users.map((user) => (
-              <div key={user.id}>
-                  <Link to={`/users/${user.id}`}>
-                      <tr>
-                      <th>{user.firstName + " " + user.lastName}</th>
-                      <th>{user.username}</th>
-                      <th>{user.isAdmin ? 'Admin' : ''}</th>
-                      </tr>
-                  </Link>
-              </div>
-          ))} */
-}
 
 const mapStateToProps = ({ users }) => {
   return {

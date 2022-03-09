@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchSingleUser } from '../store/users';
+import { Link } from 'react-router-dom';
 import UpdateProfile from './UpdateProfile';
 
 class SingleUser extends React.Component {
@@ -42,16 +43,12 @@ class SingleUser extends React.Component {
     }
 }
 
-const mapStateToProps = ({ users }) => {
-    return {
-        singleUser: users.singleUser
-    }
-}
+const mapStateToProps = ({ users }) => ({
+    singleUser: users.singleUser
+})
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getSingleUser: (userId) => dispatch(fetchSingleUser(userId))
-    }
-}
+const mapDispatchToProps = (dispatch) => ({
+    getSingleUser: (userId) => dispatch(fetchSingleUser(userId))
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleUser)
