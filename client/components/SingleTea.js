@@ -47,16 +47,17 @@ export class SingleTea extends React.Component {
   }
 }
 
-const mapStateToProps = ({ singleTea }) => {
+const mapStateToProps = (state) => {
   return {
-    tea: singleTea.singleTea,
+    tea: state.singleTea.singleTea,
+    isLoggedIn: !!state.auth.id
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchSingleTea: (id) => dispatch(fetchSingleTea(id)),
-    addTeaToCart: (id) => dispatch(addTeaToCart(id))
+    addTeaToCart: (id, isLoggedIn) => dispatch(addTeaToCart(id, isLoggedIn))
   };
 };
 
