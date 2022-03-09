@@ -84,14 +84,15 @@ export const removeTeaFromCart = (cartItem, isLoggedIn) => {
     if (!isLoggedIn) {
       dispatch(_deleteFromCart(cartItem))
       localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
-    } 
-    try {
-      console.log("CART ITEM", cartItem)
-      await axios.delete(`/api/carts/${cartItem.carttea.cartId}/${cartItem.carttea.teaId}`);
-      // dispatch(_deleteFromCart(tea));
-      dispatch(getUserCart(localStorage.token))
-    } catch (err) {
-      console.log('Delete Failed', err)
+    } else {
+      try {
+        console.log("CART ITEM", cartItem)
+        await axios.delete(`/api/carts/${cartItem.carttea.cartId}/${cartItem.carttea.teaId}`);
+        // dispatch(_deleteFromCart(tea));
+        dispatch(getUserCart(localStorage.token))
+      } catch (err) {
+        console.log('Delete Failed', err)
+      }
     }
   }
 }
