@@ -11,7 +11,7 @@ export const Home = props => {
 
   return (
     <div>
-      <h2 style={{fontFamily: "montserrat"}} >Welcome, {isLoggedIn ? firstName + "!" : 'friend!'}</h2>
+      <h2 style={{fontFamily: "montserrat"}} >Welcome, {isLoggedIn ? firstName + "!" : 'Friend!'}</h2>
       <Link to={"/teas"}>
           <h2
           style={{fontFamily: "montserrat", justifyContent: 'center'}}>See All Teas</h2>
