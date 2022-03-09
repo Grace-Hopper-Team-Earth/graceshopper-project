@@ -62,7 +62,7 @@ export const getUserCart =
 //if logged in, makes axios request to api/carts/:teaid/:credential
 export const addTeaToCart = (tea, isLoggedIn) => {
   return async (dispatch, getState) => {
-    if (false) {
+    if (!isLoggedIn) {
       dispatch(_addToCart(tea));
       localStorage.setItem("cart", JSON.stringify(getState().cart.cartItems));
     } else {
@@ -79,8 +79,12 @@ export const addTeaToCart = (tea, isLoggedIn) => {
   };
 };
 
-export const removeTeaFromCart = (cartItem) => {
-  return async (dispatch) => {
+export const removeTeaFromCart = (cartItem, isLoggedIn) => {
+  return async (dispatch, getState) => {
+    if (!isLoggedIn) {
+      dispatch(_deleteFromCart(cartItem))
+      localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
+    } 
     try {
       console.log("CART ITEM", cartItem)
       await axios.delete(`/api/carts/${cartItem.carttea.cartId}/${cartItem.carttea.teaId}`);
@@ -103,7 +107,7 @@ const initialCartState = {
 export default function (state = initialCartState, action) {
   switch (action.type) {
     case SET_CART:
-      return { ...state, cartItems: [...action.cartItems.teas] };
+      return { ...state, cartItems: [...action.cartItems] };
 
     case ADD_TO_CART: {
       const itemInCart = state.cartItems.find((item) => {
