@@ -6,26 +6,20 @@ const GET_ALL_USERS = 'GET_ALL_USERS';
 const UPDATE_USER = 'UPDATE_USER';
 
 // ACTION CREATORS
-export const setSingleUser = (user) => {
-    return {
-        type: GET_SINGLE_USER,
-        user
-    }
-}
+const setSingleUser = (user) => ({
+    type: GET_SINGLE_USER,
+    user
+})
 
-export const setAllUsers = (users) => {
-    return {
-        type: GET_ALL_USERS,
-        users
-    }
-}
+const setAllUsers = (users) => ({
+    type: GET_ALL_USERS,
+    users
+})
 
-export const updateUser = (user) => {
-    return {
-        type: UPDATE_USER,
-        user
-    }
-}
+const updateUser = (user) => ({
+    type: UPDATE_USER,
+    user
+})
 
 // THUNK CREATORS 
 export const fetchSingleUser = (id) => {
@@ -66,11 +60,12 @@ export const fetchAllUsers = () => {
     }
 }
 
-export const _updateUser = (user) => {
+export const _updateUser = (user, history) => {
     return async (dispatch) => {
         try {   
-            const { data } = await axios.put(`/api/users/${user.id}`, user)
-            dispatch(updateUser(data))
+            const { data: updated } = await axios.put(`/api/users/${user.id}`, user)
+            dispatch(updateUser(updated))
+            history.push(`/users/${user.id}`)
         } catch(err) {
             console.error(err)
         }

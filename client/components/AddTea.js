@@ -31,7 +31,7 @@ class AddTea extends React.Component {
     console.log('this state: ', name, description);
     return (
       <div>
-        <h2>You can add new product here!</h2>
+        <h2>Add new product info here!</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor='name'>Name:</label>
@@ -69,7 +69,7 @@ class AddTea extends React.Component {
               name='imageUrl'
               onChange={this.handleChange}
               value={imageUrl}
-              placeholder='Enter the image of product'
+              placeholder='Enter the image url'
             />
           </div>
           <button type='submit'>Submit</button>
@@ -79,11 +79,8 @@ class AddTea extends React.Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  // console.log('the props: ', this.props);
-  return {
-    createTea: (tea) => dispatch(createTea(tea)),
-  };
-};
+const mapDispatchToProps = (dispatch, { history }) => ({
+  createTea: (tea) => dispatch(createTea(tea, history))
+})
 
 export default connect(null, mapDispatchToProps)(AddTea);

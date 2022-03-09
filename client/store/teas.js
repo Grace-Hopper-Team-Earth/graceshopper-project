@@ -9,22 +9,22 @@ const DELETE_TEA = 'DELETE_TEA';
 // ACTION CREATORS
 const setTeas = (teas) => ({
   type: GET_ALL_TEAS,
-  teas,
+  teas
 });
 
 const addNewTea = (tea) => ({
   type: ADD_NEW_TEA,
-  tea,
+  tea
 });
 
 const _updateTea = (tea) => ({
   type: UPDATE_TEA,
-  tea,
+  tea
 });
 
 const _deleteTea = (tea) => ({
   type: DELETE_TEA,
-  tea,
+  tea
 });
 
 // THUNK CREATORS
@@ -48,7 +48,7 @@ export const createTea = (tea, history) => {
         },
       });
       dispatch(addNewTea(created));
-      history.push('/');
+      history.push('/adminteas');
     } catch (err) {
       console.log('Unable to create tea', err);
     }

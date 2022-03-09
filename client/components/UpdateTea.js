@@ -50,7 +50,7 @@ class UpdateTea extends React.Component {
   render() {
     return (
       <div>
-        <h2>You can update product here!</h2>
+        <h2>You can update the product here!</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor='name'>Name:</label>
@@ -58,7 +58,7 @@ class UpdateTea extends React.Component {
               name='name'
               onChange={this.handleChange}
               value={this.state.name}
-              placeholder='Enter the name of product'
+              placeholder='Enter new name of product'
             />
           </div>
 
@@ -68,7 +68,7 @@ class UpdateTea extends React.Component {
               name='description'
               onChange={this.handleChange}
               value={this.state.description}
-              placeholder='Enter the description of product'
+              placeholder='Enter new description of product'
             />
           </div>
 
@@ -78,7 +78,7 @@ class UpdateTea extends React.Component {
               name='price'
               onChange={this.handleChange}
               value={this.state.price}
-              placeholder='Enter the price of product'
+              placeholder='Enter new price of product'
             />
           </div>
 
@@ -88,7 +88,7 @@ class UpdateTea extends React.Component {
               name='imageUrl'
               onChange={this.handleChange}
               value={this.state.imageUrl}
-              placeholder='Enter the image of product'
+              placeholder='Enter new image url'
             />
           </div>
           <button type='submit'>Submit</button>
@@ -97,10 +97,6 @@ class UpdateTea extends React.Component {
     );
   }
 }
-
-// const mapStateToProps = (state) => ({
-//   tea: state.singleTea,
-// });
 
 const mapStateToProps = ({ singleTea }) => ({
   singleTea,

@@ -105,9 +105,9 @@ const mapStateToProps = ({ users }) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, { history }) => {
     return {
-        updateProfile: (user) => dispatch(_updateUser(user)),
+        updateProfile: (user) => dispatch(_updateUser(user, history)),
         getSingleUser: (userId) => dispatch(fetchSingleUser(userId))
     }
 }
