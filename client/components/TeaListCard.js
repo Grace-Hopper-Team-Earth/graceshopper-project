@@ -62,7 +62,6 @@ class TeaCard extends React.Component{
   }
   
   render() {
-    console.log('this is props in card', this.props)
     return (
       <div style={cardStyles.container}>
         <Link to={`/teas/${this.props.tea.id}`}>
@@ -91,13 +90,14 @@ class TeaCard extends React.Component{
   const mapStateToProps = (state) => {
     return {
       singleTea: state.singleTea.singleTea,
+      isLoggedIn: !!state.auth.id
     };
   };
   
   const mapDispatchToProps = (dispatch) => {
     return {
       fetchSingleTea: (id) => dispatch(fetchSingleTea(id)),
-      addTeaToCart: (id) => dispatch(addTeaToCart(id)),
+      addTeaToCart: (id, isLoggedIn) => dispatch(addTeaToCart(id, isLoggedIn)),
       fetchSingleUser: (id) => dispatch(fetchSingleUser(id))
     };
   };

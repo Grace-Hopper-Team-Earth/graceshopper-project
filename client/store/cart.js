@@ -62,12 +62,12 @@ export const getUserCart =
 //if logged in, makes axios request to api/carts/:teaid/:credential
 export const addTeaToCart = (tea, isLoggedIn) => {
   return async (dispatch, getState) => {
-    if (!isLoggedIn) {
+    if (isLoggedIn === false) {
       dispatch(_addToCart(tea));
       localStorage.setItem("cart", JSON.stringify(getState().cart.cartItems));
     } else {
       try {
-        const { data } = await axios.post(
+        await axios.post(
           `/api/carts/${tea.id}/${localStorage.token}`
         );
         // dispatch(_addToCart(tea));
@@ -81,12 +81,11 @@ export const addTeaToCart = (tea, isLoggedIn) => {
 
 export const removeTeaFromCart = (cartItem, isLoggedIn) => {
   return async (dispatch, getState) => {
-    if (!isLoggedIn) {
+    if (isLoggedIn === false) {
       dispatch(_deleteFromCart(cartItem))
       localStorage.setItem('cart', JSON.stringify(getState().cart.cartItems))
     } else {
       try {
-        console.log("CART ITEM", cartItem)
         await axios.delete(`/api/carts/${cartItem.carttea.cartId}/${cartItem.carttea.teaId}`);
         // dispatch(_deleteFromCart(tea));
         dispatch(getUserCart(localStorage.token))

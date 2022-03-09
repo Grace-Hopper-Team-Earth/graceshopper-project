@@ -12,14 +12,15 @@ class Cart extends React.Component {
   }
 
   render() {
-    const { cart } = this.props;
+    const { cart, isLoggedIn } = this.props;
     const cartItems = cart.cartItems || []
 
     let currentTotal = 0;
     
     if (cartItems.length > 0) {
+      console.log(cartItems)
       const orderTotal = cartItems.map((tea) => {
-        if(!this.props.isLoggedIn) {
+        if(this.props.isLoggedIn === false) {
           return tea.price*tea.itemQty
 
         } else {
@@ -37,11 +38,11 @@ class Cart extends React.Component {
             <div key={cartItem.id}>
               <ul>
                 <span style={{"marginRight": "10px"}}>
-                  {this.props.isLoggedIn ? cartItem.carttea.itemQty : cartItem.itemQty}
+                  {isLoggedIn === true ? cartItem.carttea.itemQty : cartItem.itemQty}
                 </span>
               {cartItem.name} 
               <button className="remove-item"
-              onClick={() => this.props.removeTeaFromCart(cartItem, this.props.isLoggedIn)}>
+              onClick={() => this.props.removeTeaFromCart(cartItem, isLoggedIn)}>
               Remove From Cart
               </button>
             </ul>
