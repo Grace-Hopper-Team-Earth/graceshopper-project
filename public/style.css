@@ -178,3 +178,62 @@ button:hover {
 .checkout:hover {
   color: #f69017;
 }
+
+.single-tea-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.single-tea-btn {
+  margin-bottom: 10px;
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.login-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f69217c5;
+  width: 300px;
+  height: 250px;
+  border-radius: 10px;
+}
+
+.login-form label {
+  margin: 10px;
+}
+
+.login-form button {
+  margin: 20px;
+}
+
+.signup-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.signup-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f69217c5;
+  width: 300px;
+  height: 375px;
+  border-radius: 10px;
+}
+
+.signup-form button {
+  margin: 20px;
+}

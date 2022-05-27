@@ -91,6 +91,7 @@ class TeaCard extends React.Component{
             <span>
               <h3 style={cardStyles.teaName}>{this.props.tea.name}</h3>
               <p style={cardStyles.teaDescription}>{this.props.tea.description}</p>
+              <p style={cardStyles.teaDescription}>${this.props.tea.price}.00</p>
             </span>
           </Link>
           <div>
