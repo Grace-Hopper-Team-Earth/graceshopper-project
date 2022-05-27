@@ -5,40 +5,41 @@ import { logout } from '../store';
 
 const Navbar = ({ handleClick, isLoggedIn, user }) => {
   return (
-    <div>
-      <img
-        src='https://static.vecteezy.com/system/resources/previews/002/913/654/non_2x/cute-hippopotamus-drinking-boba-milk-tea-animal-cartoon-concept-isolated-can-used-for-t-shirt-greeting-card-invitation-card-or-mascot-flat-cartoon-style-free-vector.jpg'
-        width='100'
-        height='100'
-      />
-      <h1>Hippo Tea</h1>
-      <h4>Made to order bubble teas</h4>
-    
+    <div className = 'navbar'>
+      <div className = 'logo'>
+        <img
+          src='https://static.vecteezy.com/system/resources/previews/002/913/654/non_2x/cute-hippopotamus-drinking-boba-milk-tea-animal-cartoon-concept-isolated-can-used-for-t-shirt-greeting-card-invitation-card-or-mascot-flat-cartoon-style-free-vector.jpg'
+          width='120'
+          height='120'
+        />
+        <h1>Hippo Tea</h1>
+        <h4>Made to Order Bubble Teas</h4>
+      </div>
       <nav>
         {isLoggedIn && user.isAdmin ? (
-          <div>
+          <div className = 'navbar'>
             {/* The navbar will show these links after you log in */}
-            <Link to='/adminportal'>Admin Portal</Link>
-            <Link to='/adminteas'>Manage Teas</Link>
-            <Link to="/users">Manage Users</Link>
-            <Link to={`/users/${user.id}`}>My Profile</Link>
-            <a href='#' onClick={handleClick}>
+            <Link className='link-nav' to='/adminportal'>Admin Portal</Link>
+            <Link className='link-nav' to='/adminteas'>Manage Teas</Link>
+            <Link className='link-nav' to="/users">Manage Users</Link>
+            <Link className='link-nav' to={`/users/${user.id}`}>My Profile</Link>
+            <a className='link-nav' href='#' onClick={handleClick}>
               Logout
             </a>
           </div>
         ) : isLoggedIn ? (
-          <div>
+          <div className = 'navbar'>
             {/* The navbar will show these links after you log in */}
-            <Link to='/home'>Home</Link>
-            <Link to='/teas'>Bubble Teas</Link>
-            <Link to={`/users/${user.id}`}>Profile</Link>
-            <Link to={`/carts`}>Cart</Link>
-            <a href='#' onClick={handleClick}>
+            <Link className='link-nav' to='/home'>Home</Link>
+            <Link className='link-nav' to='/teas'>Bubble Teas</Link>
+            <Link className='link-nav' to={`/users/${user.id}`}>Profile</Link>
+            <Link className='link-nav' to={`/carts`}>Cart</Link>
+            <a className='link-nav' href='#' onClick={handleClick}>
               Logout
             </a>
           </div>
         ) : (
-          <div>
+          <div className = 'navbar'>
             {/* The navbar will show these links before you log in */}
             <Link to='/home'>Home</Link>
             <Link to='/teas'>Bubble Teas</Link>
@@ -48,7 +49,7 @@ const Navbar = ({ handleClick, isLoggedIn, user }) => {
           </div>
         )}
       </nav>
-      <hr />
+      <hr className='border-nav' />
     </div>
   );
 };

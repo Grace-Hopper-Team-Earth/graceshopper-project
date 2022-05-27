@@ -13,6 +13,7 @@ const cardStyles = {
   container: {
     display: 'flex',
     width: 325,
+    height: 315,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
@@ -21,6 +22,8 @@ const cardStyles = {
     borderRadius: 10,
     border: '1px solid #cec7c759',
     boxShadow: '0 0 1px 1px #cec7c759',
+    textAlign: 'center',
+    backgroundColor: '#f692173e'
   },
   imageWrapper: {
     display: 'flex',
@@ -35,8 +38,6 @@ const cardStyles = {
     height: 150,
     width: 150,
     borderRadius: '50%',
-    padding: 10,
-    margin:10,
     fontWeight: 'bold',
   },
   teaName: {

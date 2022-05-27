@@ -14,6 +14,33 @@ h4 {
   color: #584C56
 }
 
+.navbar {
+  background-color: #bcdef7ae;
+}
+
+.link-nav {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.link-nav:hover {
+  color: #f69017;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo h1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.logo h4 {
+  margin-bottom: 5px;
+}
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -41,17 +68,28 @@ nav a {
 
 }
 
+.border-nav {
+  background-color: #f69017;
+  height: 1px;
+  border: none;
+}
+
 form div {
   margin: 1em;
   display: inline-block;
 }
 
 img {
-    display: block;
   border-radius: 50%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 5px;
+}
+
+button {
+  border-radius: 10px;
+  border: none;
+  background-color: #1FA2F8;
+  color: white;
+  height: 25px;
 }
 
 button:hover {
@@ -64,4 +102,33 @@ button:hover {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f692173e;
+  width: 350px;
+  height: 225px;
+  border-radius: 5%;
+  margin: 30px;
+  border: 1px solid #1FA2F8;
+}
+
+.profile-contents {
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #f69217c5;
+  border-radius: 10%;
+  color: white;
+  font-weight: 300;
 }
