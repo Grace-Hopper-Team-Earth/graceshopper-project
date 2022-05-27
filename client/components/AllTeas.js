@@ -11,12 +11,10 @@ export class AllTeas extends React.Component {
 
     render() {
       const teas = this.props.allTeas;
-      console.log('this.props in render:', this.props)
-      console.log('teas inside render:', teas)
+      
       return (
-        <div>
-          <h2 className="section-title">Our Teas!</h2>
-          {/* <ul> */}
+        <div className = 'allTeas-container'>
+          {/* <h2 className="section-title">Our Teas!</h2> */}
           {teas && teas.length > 0 ? (
               teas.map((tea) => (
                 <div key={tea.id}>
@@ -37,27 +35,14 @@ export class AllTeas extends React.Component {
                 <p>
                   Please check back later!
                 </p>
-
               </div>
             )}
-            {/* {teas.map((tea) => (
-              <li key={tea.id}>
-                <div>
-                  <h3>{tea.name}</h3>
-                  <p>{tea.description}</p>
-                  <Link to={`/teas/${tea.id}`} key={tea.id}>Single View</Link>
-                </div>
-              </li>
-            ))} */}
-          {/* </ul> */}
         </div>
       )
     }
 }
 
 const mapStateToProps = ({allTeas}) => ({
-  //jess trying things...
-  // teas: allTeas.allTeas
   allTeas: allTeas.allTeas
 });
 
