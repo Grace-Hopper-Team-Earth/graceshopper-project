@@ -12,34 +12,48 @@ const MySwal = withReactContent(Swal);
 const cardStyles = {
   container: {
     display: 'flex',
-    height: 200,
+    width: 325,
+    height: 315,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    margin: 10,
+    justifyContent: 'center',
+    flexDirection: 'column',
+    margin: 30,
     padding: 10,
     borderRadius: 10,
+    border: '1px solid #cec7c759',
     boxShadow: '0 0 1px 1px #cec7c759',
+    textAlign: 'center',
+    backgroundColor: '#f692173e'
+  },
+  imageWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   profilePicture: {
     display: 'flex',
-    justifyContent: 'right',
+    justifyContent: 'center',
     alignItems: 'right',
     color: 'white',
-    height: 100,
-    width: 100,
+    height: 150,
+    width: 150,
     borderRadius: '50%',
-    padding: 10,
-    margin:10,
     fontWeight: 'bold',
   },
   teaName: {
-    
     margin: 10
   },
   teaDescription: {
     color: '#584C56', 
     margin: 10
   },
+  button: {
+    borderRadius: '10px',
+    border: 'none',
+    backgroundColor: '#1FA2F8',
+    color: 'white',
+    height: '25px'
+  }
 };
 
 
@@ -63,27 +77,27 @@ class TeaCard extends React.Component{
   
   render() {
     return (
-      <div style={cardStyles.container}>
-        <Link to={`/teas/${this.props.tea.id}`}>
-          <span>
-            <img
-              style={cardStyles.profilePicture}
-              src={this.props.tea.imageUrl}
-              width="50"
-              height="50"
-              border-radius="30px"
-            />
-          </span>
-          <span>
-            <h3 style={cardStyles.teaName}>{this.props.tea.name}</h3>
-            <p style={cardStyles.teaDescription}>{this.props.tea.description}</p>
-          </span>
-        </Link>
-        <div>
-        {/* <button type="button"  onClick={() => this.props.tea.addTeaToCart(this.props.tea.id)}>Add to cart</button> */}
-          <button onClick={this.handleClick}>Add To Cart</button>
+        <div style={cardStyles.container}>
+          <Link to={`/teas/${this.props.tea.id}`}>
+            <span style={cardStyles.imageWrapper}>
+              <img
+                style={cardStyles.profilePicture}
+                src={this.props.tea.imageUrl}
+                width="50"
+                height="50"
+                border-radius="30px"
+              />
+            </span>
+            <span>
+              <h3 style={cardStyles.teaName}>{this.props.tea.name}</h3>
+              <p style={cardStyles.teaDescription}>{this.props.tea.description}</p>
+              <p style={cardStyles.teaDescription}>${this.props.tea.price}.00</p>
+            </span>
+          </Link>
+          <div>
+            <button style={cardStyles.button} onClick={this.handleClick}>Add To Cart</button>
+          </div>
         </div>
-      </div>
     );
   }}
 

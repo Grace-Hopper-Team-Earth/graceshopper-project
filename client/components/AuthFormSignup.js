@@ -9,9 +9,8 @@ const AuthFormSignup = props => {
   const {name, displayName, handleSubmit, error} = props
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} name={name}>
-        <div>
+    <div className = 'signup-container'>
+      <form className = 'signup-form' onSubmit={handleSubmit} name={name}>
           <label htmlFor="firstName">
             <small>First Name</small>
           </label>
@@ -20,20 +19,14 @@ const AuthFormSignup = props => {
             <small>Last Name</small>
           </label>
           <input name="lastName" type="text" />
-        </div>
-        <div>
           <label htmlFor="username">
             <small>Email</small>
           </label>
           <input name="username" type="text" />
-        </div>
-        <div>
           <label htmlFor="password">
             <small>Password</small>
           </label>
           <input name="password" type="password" />
-        </div>
-        <div>
           <label htmlFor="address">
             <small>Shipping Address</small>
           </label>
@@ -41,10 +34,7 @@ const AuthFormSignup = props => {
           name="address"
           rows={4}
           />
-        </div>
-        <div>
           <button type="submit">{displayName}</button>
-        </div>
         {error && error.response && <div> {error.response.data} </div>}
       </form>
     </div>

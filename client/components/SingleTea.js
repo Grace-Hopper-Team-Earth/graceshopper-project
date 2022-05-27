@@ -30,18 +30,16 @@ export class SingleTea extends React.Component {
     console.log('this is props ____', this.props);
     const { tea } = this.props;
     return (
-      <div>
+      <div className = 'single-tea-container'>
         <img src={tea.imageUrl}  
             width="200"
             height="200"
             border-radius="30px" />
         <h1>{tea.name}</h1>
-        <div>{tea.description}</div>
-        <div>Price: $ {tea.price}</div>
-        <div>
-          <button onClick={this.handleClick}>Add To Cart</button>
+        <h4>{tea.description}</h4>
+        <h4>Price: $ {tea.price}</h4>
+          <button className = 'single-tea-btn' onClick={this.handleClick}>Add To Cart</button>
           {/* <button type="button"  onClick={() => this.props.tea.addTeaToCart(tea.id)}>Add to cart</button> */}
-        </div>
       </div>
     );
   }

@@ -32,12 +32,14 @@ class SingleUser extends React.Component {
             return <UpdateProfile userId={this.props.match.params.id}/>
         }
         return (
-            <div>
-                <h3 style={{"marginBottom": "5px"}}>{user.firstName + " " + user.lastName}</h3>
-                <h5 style={{"color": "red", "marginTop": "5px"}}>{user.isAdmin ? 'Admin' : ''}</h5>
-                <h4>Email: {user.username}</h4>
-                <h4>Address: {user.address ? user.address : 'No address on file'}</h4>
-                <button type="submit" onClick={() => this.dislayUpdateForm()}>Edit Profile</button>
+            <div className = 'profile-container'>
+                <div className = 'profile-wrapper'>
+                    <h2 style={{"marginBottom": "5px", "color": "#584C56"}}>{user.firstName + " " + user.lastName}</h2>
+                    <h5 style={{"color": "red", "marginTop": "5px"}}>{user.isAdmin ? 'Admin' : ''}</h5>
+                    <h4><span className = 'profile-contents'>Email</span> {user.username}</h4>
+                    <h4><span className = 'profile-contents'>Address</span> {user.address ? user.address : 'No address on file'}</h4>
+                    <button type="submit" onClick={() => this.dislayUpdateForm()}>Edit Profile</button>
+                </div>
             </div>
         )
     }
