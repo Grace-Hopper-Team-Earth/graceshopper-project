@@ -31,26 +31,28 @@ class Cart extends React.Component {
     }
    
     return (
-      <div>
-        <div>Items in your cart</div>
-        <div>
-          {cartItems.map((cartItem) => (
-            <div key={cartItem.id}>
-              <ul>
-                <span style={{"marginRight": "10px"}}>
-                  {isLoggedIn === true ? cartItem.carttea.itemQty : cartItem.itemQty}
-                </span>
-              {cartItem.name} 
-              <button className="remove-item"
-              onClick={() => this.props.removeTeaFromCart(cartItem, isLoggedIn)}>
-              Remove From Cart
-              </button>
-            </ul>
-            </div>
-          ))}
+      <div className = 'cart-container'>
+        <div className = 'cart-wrapper'>
+          <h3>Your Cart</h3>
+            {cartItems.map((cartItem) => (
+              <div key={cartItem.id}>
+                <ul>
+                  <span className = 'cart-qty'>
+                    {isLoggedIn === true ? cartItem.carttea.itemQty : cartItem.itemQty}
+                  </span>
+                  {cartItem.name} 
+                  <button className="remove-item"
+                  onClick={() => this.props.removeTeaFromCart(cartItem, isLoggedIn)}>
+                  Remove Item
+                  </button>
+                </ul>
+              </div>
+            ))}
+          <div className = 'order-details'>
+              <h4>Order Total: ${currentTotal}</h4>
+              <Link className = 'checkout' to="/checkout">Checkout</Link>
+          </div>
         </div>
-        <div>Order Total: ${currentTotal}</div>
-        <Link to="/checkout">Checkout</Link>
       </div>
     );
   }

@@ -132,3 +132,49 @@ button:hover {
   color: white;
   font-weight: 300;
 }
+
+.cart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-wrapper {
+  display: flex;
+  align-items: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #f692173e;
+  width: 350px;
+  height: 500px;
+  border-radius: 5%;
+  margin: 30px;
+  border: 1px solid #1FA2F8;
+}
+
+.cart-qty {
+  padding: 3px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background-color: #f69217c5;
+  border-radius: 20%;
+  color: white;
+  font-weight: 300;
+  margin-right: 5px;
+}
+
+.remove-item {
+  margin-left: 10px;
+}
+
+.order-details {
+  margin-top: 30px;
+}
+
+.checkout {
+  font-size: 20px;
+}
+
+.checkout:hover {
+  color: #f69017;
+}
